@@ -4,10 +4,14 @@
     <navigation/>
 
     <div id="fullpage">
-      <div class="section" data-anchor="firstPage">Some section 1</div>
-      <div class="section" data-anchor="secondPage">Some section 2</div>
-      <div class="section" data-anchor="thirdPage">Some section 3</div>
-      <div class="section" data-anchor="fourthPage">Some section 4</div>
+      <div class="section" data-anchor="home">HOME</div>
+
+      <div class="section" data-anchor="services">Services</div>
+
+      <div class="section" data-anchor="gallery">Gallery</div>
+
+      <div class="section" data-anchor="contact">Contact</div>
+
     </div>
 
   </div>
@@ -24,13 +28,7 @@ export default {
   components: {
     navigation
   },
-  data() {
-    return {
-
-    }
-  },
   mounted () {
-    console.log('dave')
     TweenMax.to('h1', 1, {x: 50})
     new fullpage('#fullpage', {
       // anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
@@ -45,65 +43,8 @@ export default {
 </script>
 
 <style lang="scss">
-  // @import "~/assets/sass/base/_mediaquery.scss";
-
-  html, body, div, span, applet, object, iframe,
-  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-  a, abbr, acronym, address, big, cite, code,
-  del, dfn, em, img, ins, kbd, q, s, samp,
-  small, strike, strong, sub, sup, tt, var,
-  b, u, i, center,
-  dl, dt, dd, ol, ul, li,
-  fieldset, form, label, legend,
-  table, caption, tbody, tfoot, thead, tr, th, td,
-  article, aside, canvas, details, embed, 
-  figure, figcaption, footer, header, hgroup, 
-  menu, nav, output, ruby, section, summary,
-  time, mark, audio, video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-  }
-  /* HTML5 display-role reset for older browsers */
-  article, aside, details, figcaption, figure, 
-  footer, header, hgroup, menu, nav, section {
-    display: block;
-  }
-  body {
-    line-height: 1;
-  }
-  ol, ul {
-    list-style: none;
-  }
-  blockquote, q {
-    quotes: none;
-  }
-  blockquote:before, blockquote:after,
-  q:before, q:after {
-    content: '';
-    content: none;
-  }
-  table {
-    border-collapse: collapse;
-    border-spacing: 0;
-  }
-
-  #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    // margin-top: 60px;
-  }
-  .container {
-    width: 100%;
-    box-sizing: border-box;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+  @import "./src/assets/scss/base/_variables.scss";
+  @import "./src/assets/scss/base/_reset.scss";
+  @import "./src/assets/scss/elements/_structure.scss";
   
 </style>
