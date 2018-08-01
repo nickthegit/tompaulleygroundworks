@@ -6,3 +6,9 @@ body {
     background: $black;
     color: $white;
 }
+
+.contained {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1200px;
+}

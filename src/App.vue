@@ -4,13 +4,18 @@
     <navigation/>
 
     <div id="fullpage">
-      <div class="section" data-anchor="home">HOME</div>
+      <section class="section hero" data-anchor="home">
+        <div class="home-wrapper">
+          <img src="http://via.placeholder.com/650x650" alt="Tom Paulley Groundworks Logo">
+          <h1><strong>Tom Paulley Groundworks</strong> is a Dorset based ground works company offering services towards all aspects of groundworks, from excavations to drainage and surfacing to landscaping, serving all neighbouring counties.</h1>
+        </div>
+      </section>
 
-      <div class="section" data-anchor="services">Services</div>
+      <section class="section services" data-anchor="services">
+        <services/> 
+      </section>
 
-      <div class="section" data-anchor="gallery">Gallery</div>
-
-      <div class="section" data-anchor="contact">Contact</div>
+      <section class="section" data-anchor="contact">Contact</section>
 
     </div>
 
@@ -19,6 +24,7 @@
 
 <script>
 import navigation from './components/navigation.vue'
+import services from './components/services.vue'
 
 import TweenMax from 'gsap'
 import fullpage from 'fullpage.js'
@@ -26,10 +32,11 @@ import fullpage from 'fullpage.js'
 export default {
   name: 'app',
   components: {
-    navigation
+    navigation,
+    services
   },
   mounted () {
-    TweenMax.to('h1', 1, {x: 50})
+    // TweenMax.to('h1', 1, {x: 50})
     new fullpage('#fullpage', {
       // anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
       licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
@@ -46,5 +53,38 @@ export default {
   @import "./src/assets/scss/base/_variables.scss";
   @import "./src/assets/scss/base/_reset.scss";
   @import "./src/assets/scss/elements/_structure.scss";
+  @import "./src/assets/scss/base/_mediaquery.scss";
+
+  .hero {
+    background-image: url('/img/home_page_1920x1080.jpg');
+    position: relative;
+    .home-wrapper {
+      background: rgba($black,0.3);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      box-sizing: border-box;
+    }
+    h1 {
+        font-size: 3.4vh;
+        line-height: 3.6vh;
+        width: 100%;
+        max-width: 800px;
+        padding-top: 40px;
+    }
+    img {
+      height: 30%;
+      width: auto;
+    }
+    @include breakpoint(mobile) { 
+      img {
+        width: 50%;
+        height: auto;
+      }
+    }
+  }
   
 </style>

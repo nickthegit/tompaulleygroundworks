@@ -1,13 +1,12 @@
 <template>
     <header :class="{navOpen: isActive}" >
         <a href="/" class="brand">
-            <img src="http://via.placeholder.com/350x350" alt="">
+            <img src="http://via.placeholder.com/350x350" alt="Tom Paulley Groundworks Logo">
         </a>
         <nav>
             <ul id="navMenu">
                 <li @click="toggleNav" data-menuanchor="home" class="active"><a href="#home">Home</a></li>
                 <li @click="toggleNav" data-menuanchor="services"><a href="#services">Services</a></li>
-                <li @click="toggleNav" data-menuanchor="gallery"><a href="#gallery">Gallery</a></li>
                 <li @click="toggleNav" data-menuanchor="contact"><a href="#contact">Contact</a></li>
             </ul>
         </nav> 
@@ -41,7 +40,6 @@ export default {
     @import "./src/assets/scss/base/_variables.scss";
     @import "./src/assets/scss/base/_mediaquery.scss";
 
-    // $headerHeight: 100px;
     header {
       width: 100%;
       height: $headerHeight;
@@ -51,6 +49,7 @@ export default {
       z-index: 99;
       padding: $headerHeight / 8;
       box-sizing: border-box;
+      background: rgba($black,0.1);
     }
     nav {
         position: absolute;
@@ -63,6 +62,7 @@ export default {
             display: inline-block;
             padding: 10px;
             margin: 0 10px;
+            font-size: 20px;
         }
         a {
             text-decoration: none;
