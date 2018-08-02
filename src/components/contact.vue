@@ -1,11 +1,11 @@
 <template>
     <div class="contained contact-wrapper">
-        <form name="contact" method="POST" action="/" netlify>
-            <label><input type="text" name="name" placeholder="Your Name" /></label>   
-            <label><input type="email" name="email" placeholder="Your Email" /></label>
-            <label><input type="tel" name="tel" placeholder="Your Telephone" /></label>
-            <label><input type="text" name="location" placeholder="Your Location" /></label>   
-            <label><textarea name="message" placeholder="Description of works"></textarea></label>
+        <form name="contact" method="POST" netlify>
+            <label>Name:<input type="text" name="name" placeholder="Your Name" /></label>   
+            <label>Email:<input type="email" name="email" placeholder="Your Email" /></label>
+            <label>Telephone:<input type="tel" name="tel" placeholder="Your Telephone" /></label>
+            <label>Location:<input type="text" name="location" placeholder="Your Location" /></label>   
+            <label>Description of work:<textarea name="message" placeholder="Description of works"></textarea></label>
             <div data-netlify-recaptcha></div>
             <button type="submit">SEND</button>
         </form>
