@@ -15,7 +15,9 @@
         <services/> 
       </section>
 
-      <section class="section" data-anchor="contact">Contact</section>
+      <section class="section" data-anchor="contact">
+        <contact/>
+      </section>
 
     </div>
 
@@ -25,6 +27,7 @@
 <script>
 import navigation from './components/navigation.vue'
 import services from './components/services.vue'
+import contact from './components/contact.vue'
 
 import TweenMax from 'gsap'
 import fullpage from 'fullpage.js'
@@ -33,7 +36,8 @@ export default {
   name: 'app',
   components: {
     navigation,
-    services
+    services,
+    contact
   },
   data() {
     return {
