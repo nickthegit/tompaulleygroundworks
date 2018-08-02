@@ -1,7 +1,7 @@
 <template>
     <header :class="{navOpen: isActive}" >
         <a href="/" class="brand">
-            <img src="http://via.placeholder.com/350x350" alt="Tom Paulley Groundworks Logo">
+            <img src="http://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto:good,w_100/v1533210167/tpgw/tom-paulley-groundworks-logo.png" alt="Tom Paulley Groundworks Logo">
         </a>
         <nav>
             <ul id="navMenu">

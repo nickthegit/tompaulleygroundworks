@@ -6,7 +6,7 @@
     <div id="fullpage">
       <section class="section hero" data-anchor="home" :style="{ 'background-image': 'url(' + hero.image + ')' }">
         <div class="home-wrapper">
-          <img src="http://via.placeholder.com/650x650" alt="Tom Paulley Groundworks Logo">
+          <img src="http://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto:good,w_650/v1533210167/tpgw/tom-paulley-groundworks-logo.png" alt="Tom Paulley Groundworks Logo">
           <h1>{{ hero.strapline }}</h1>
         </div>
       </section>
@@ -87,7 +87,7 @@ export default {
         padding-top: 40px;
     }
     img {
-      height: 30%;
+      height: 32%;
       width: auto;
     }
     @include breakpoint(mobile) { 
