@@ -1,6 +1,6 @@
 <template>
     <div class="contained contact-wrapper">
-        <form name="contact" method="POST" netlify>
+        <form name="contact" method="POST" action="/#contact" netlify>
             <label><input type="text" name="name" placeholder="Your Name" /></label>   
             <label><input type="email" name="email" placeholder="Your Email" /></label>
             <label><input type="tel" name="tel" placeholder="Your Telephone" /></label>
