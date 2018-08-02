@@ -6,7 +6,7 @@
     <div id="fullpage">
       <section class="section hero" data-anchor="home" :style="{ 'background-image': 'url(' + hero.image + ')' }">
         <div class="home-wrapper">
-          <img src="http://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto:good,w_650/v1533210167/tpgw/tom-paulley-groundworks-logo.png" alt="Tom Paulley Groundworks Logo">
+          <img src="https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto:good,w_650/v1533210167/tpgw/tom-paulley-groundworks-logo.png" alt="Tom Paulley Groundworks Logo">
           <h1>{{ hero.strapline }}</h1>
         </div>
       </section>
@@ -42,7 +42,7 @@ export default {
   data() {
     return {
       hero: {
-        image: 'http://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto,w_1920,h_1080/v1533204731/tpgw/home-page.jpg',
+        image: 'https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto,w_1920,h_1080/v1533204731/tpgw/home-page.jpg',
         strapline: 'Tom Paulley Groundworks is a Dorset based ground works company offering services towards all aspects of groundworks, from excavations to drainage and surfacing to landscaping, serving all neighbouring counties.'
       }
     }

@@ -24,13 +24,13 @@ export default {
         return {
             services: ['Drainage', 'Concreting', 'Resin Bound Surfacing', 'Tarmacking', 'Driveways and Trackways', 'Foundations Excavations etc', 'Landscaping', 'Bulk Excavations'],
             galleryImages: [
-                'http://res.cloudinary.com/jonserness/image/upload/v1533128578/tpgw/tpgw1.jpg',
-                'http://res.cloudinary.com/jonserness/image/upload/v1533203145/tpgw/tpgw2.jpg',
-                'http://res.cloudinary.com/jonserness/image/upload/v1533203150/tpgw/tpgw3.jpg',
-                'http://res.cloudinary.com/jonserness/image/upload/v1533203150/tpgw/tpgw4.jpg',
-                'http://res.cloudinary.com/jonserness/image/upload/v1533203145/tpgw/tpgw5.jpg',
-                'http://res.cloudinary.com/jonserness/image/upload/v1533203143/tpgw/tpgw6.jpg',
-                'http://res.cloudinary.com/jonserness/image/upload/v1533203143/tpgw/tpgw7.jpg'
+                'https://res.cloudinary.com/jonserness/image/upload/v1533128578/tpgw/tpgw1.jpg',
+                'https://res.cloudinary.com/jonserness/image/upload/v1533203145/tpgw/tpgw2.jpg',
+                'https://res.cloudinary.com/jonserness/image/upload/v1533203150/tpgw/tpgw3.jpg',
+                'https://res.cloudinary.com/jonserness/image/upload/v1533203150/tpgw/tpgw4.jpg',
+                'https://res.cloudinary.com/jonserness/image/upload/v1533203145/tpgw/tpgw5.jpg',
+                'https://res.cloudinary.com/jonserness/image/upload/v1533203143/tpgw/tpgw6.jpg',
+                'https://res.cloudinary.com/jonserness/image/upload/v1533203143/tpgw/tpgw7.jpg'
             ]
         }
     },
