@@ -6,7 +6,7 @@
             <label>Telephone:<input type="tel" name="tel" placeholder="Your Telephone" /></label>
             <label>Location:<input type="text" name="location" placeholder="Your Location" /></label>   
             <label>Description of work:<textarea name="message" placeholder="Description of works"></textarea></label>
-            <div data-netlify-recaptcha></div>
+            <!-- <div data-netlify-recaptcha></div> -->
             <button type="submit">SEND</button>
         </form>
     </div>
