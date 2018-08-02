@@ -6,7 +6,7 @@
         </article>
         <aside class="gallery">
             <main>
-                <swiper/>
+                <swiper :images="galleryImages"/>
             </main>
         </aside>
     </div>
@@ -22,7 +22,16 @@ export default {
     },
     data() {
         return {
-            services: ['Drainage', 'Concreting', 'Resin Bound Surfacing', 'Tarmacking', 'Driveways and Trackways', 'Foundations Excavations etc', 'Landscaping', 'Bulk Excavations']
+            services: ['Drainage', 'Concreting', 'Resin Bound Surfacing', 'Tarmacking', 'Driveways and Trackways', 'Foundations Excavations etc', 'Landscaping', 'Bulk Excavations'],
+            galleryImages: [
+                'http://res.cloudinary.com/jonserness/image/upload/v1533128578/tpgw/tpgw1.jpg',
+                'http://res.cloudinary.com/jonserness/image/upload/v1533203145/tpgw/tpgw2.jpg',
+                'http://res.cloudinary.com/jonserness/image/upload/v1533203150/tpgw/tpgw3.jpg',
+                'http://res.cloudinary.com/jonserness/image/upload/v1533203150/tpgw/tpgw4.jpg',
+                'http://res.cloudinary.com/jonserness/image/upload/v1533203145/tpgw/tpgw5.jpg',
+                'http://res.cloudinary.com/jonserness/image/upload/v1533203143/tpgw/tpgw6.jpg',
+                'http://res.cloudinary.com/jonserness/image/upload/v1533203143/tpgw/tpgw7.jpg'
+            ]
         }
     },
     computed: {
@@ -79,14 +88,12 @@ export default {
     }
     // 16:9 1920x1080
     aside {
-        background: salmon;
         grid-column: 2 / 8;
         grid-row: 4 / 5;
         position: relative;
         align-self: center;
         main {
             width: 100%;
-            background: thistle;
             position: relative;
             height: 0;
             padding-bottom: 56.25%;            

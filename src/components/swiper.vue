@@ -4,30 +4,18 @@
         <!-- Additional required wrapper -->
         <div class="swiper-wrapper">
             <!-- Slides -->
-            <div class="swiper-slide">
-                <picture>
-                    <source media="(min-width: 1024px)" srcset="https://res.cloudinary.com/jonserness/image/upload/ar_1.777777,c_fill,q_auto:good,w_900/v1533128578/tpgw/tpgw1.jpg, https://res.cloudinary.com/jonserness/image/upload/ar_1.777777,c_fill,q_auto:good,w_1800/v1533128578/tpgw/tpgw1.jpg 2x">
-                    <source media="(min-width: 769px)" srcset="https://res.cloudinary.com/jonserness/image/upload/ar_1.777777,c_fill,q_auto:good,w_900/v1533128578/tpgw/tpgw1.jpg, https://res.cloudinary.com/jonserness/image/upload/ar_1.777777,c_fill,q_auto:good,w_1800/v1533128578/tpgw/tpgw1.jpg 2x">
-                    <source media="(min-width: 481px)" srcset="https://res.cloudinary.com/jonserness/image/upload/ar_1.777777,c_fill,q_auto:good,w_770/v1533128578/tpgw/tpgw1.jpg, https://res.cloudinary.com/jonserness/image/upload/ar_1.777777,c_fill,q_auto:good,w_1440/v1533128578/tpgw/tpgw1.jpg 2x">
-                    <source media="(min-width: 321px)" srcset="https://res.cloudinary.com/jonserness/image/upload/ar_1.777777,c_fill,q_auto:good,w_480/v1533128578/tpgw/tpgw1.jpg, https://res.cloudinary.com/jonserness/image/upload/ar_1.777777,c_fill,q_auto:good,w_960/v1533128578/tpgw/tpgw1.jpg 2x">
-                    <source media="(min-width: 200px)" srcset="https://res.cloudinary.com/jonserness/image/upload/ar_1.777777,c_fill,q_auto:good,w_320/v1533128578/tpgw/tpgw1.jpg, https://res.cloudinary.com/jonserness/image/upload/ar_1.777777,c_fill,q_auto:good,w_640/v1533128578/tpgw/tpgw1.jpg 2x">
-                    <img src="https://res.cloudinary.com/jonserness/image/upload/ar_1.777777,c_fill,q_auto:good,w_900/v1533128578/tpgw/tpgw1.jpg" alt="">
-                </picture>  
+            <div class="swiper-slide" v-for="img in addCropToImg" :key="img.index">
+                <img :src="img" alt="">
             </div>
-            <div class="swiper-slide">
-                <img src="https://via.placeholder.com/1920x1080" alt="">
-            </div>
-            <div class="swiper-slide">
-                <img src="https://via.placeholder.com/1920x1080" alt="">
-            </div>
+
 
         </div>
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
 
         <!-- If we need navigation buttons -->
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
+        <div class="swiper-nav swiper-button-prev"></div>
+        <div class="swiper-nav swiper-button-next"></div>
 
         <!-- If we need scrollbar -->
         <div class="swiper-scrollbar"></div>
@@ -38,6 +26,19 @@
 import Swiper from 'swiper'
 export default {
     name: 'swiper',
+    props: {
+        images: Array
+    },
+    computed: {
+        addCropToImg: function() {
+            var newArr = []
+            for (let i = 0; i < this.images.length; i++) {
+                const newImg = this.images[i].replace("/upload/", "/upload/ar_1.777777,c_fill,q_auto:good,w_900/");
+                newArr.push(newImg);
+            }
+            return newArr
+        }
+    },
     mounted () {
         var mySwiper = new Swiper ('.swiper-container', {
             loop: true,
@@ -49,6 +50,10 @@ export default {
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                type: 'bullets',
             }
         })
     }
@@ -72,5 +77,11 @@ export default {
             height: auto;
         }
     }
+    .swiper-nav {
+        @include breakpoint(mobile) { 
+            display: none;
+        }
+    }
+
 
 </style>

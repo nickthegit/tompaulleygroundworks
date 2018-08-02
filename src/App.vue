@@ -4,10 +4,10 @@
     <navigation/>
 
     <div id="fullpage">
-      <section class="section hero" data-anchor="home">
+      <section class="section hero" data-anchor="home" :style="{ 'background-image': 'url(' + hero.image + ')' }">
         <div class="home-wrapper">
           <img src="http://via.placeholder.com/650x650" alt="Tom Paulley Groundworks Logo">
-          <h1><strong>Tom Paulley Groundworks</strong> is a Dorset based ground works company offering services towards all aspects of groundworks, from excavations to drainage and surfacing to landscaping, serving all neighbouring counties.</h1>
+          <h1>{{ hero.strapline }}</h1>
         </div>
       </section>
 
@@ -35,6 +35,14 @@ export default {
     navigation,
     services
   },
+  data() {
+    return {
+      hero: {
+        image: 'http://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto,w_1920,h_1080/v1533204731/tpgw/home-page.jpg',
+        strapline: 'Tom Paulley Groundworks is a Dorset based ground works company offering services towards all aspects of groundworks, from excavations to drainage and surfacing to landscaping, serving all neighbouring counties.'
+      }
+    }
+  },
   mounted () {
     // TweenMax.to('h1', 1, {x: 50})
     new fullpage('#fullpage', {
@@ -56,7 +64,6 @@ export default {
   @import "./src/assets/scss/base/_mediaquery.scss";
 
   .hero {
-    background-image: url('/img/home_page_1920x1080.jpg');
     position: relative;
     .home-wrapper {
       background: rgba($black,0.3);
