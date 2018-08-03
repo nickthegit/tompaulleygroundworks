@@ -1,6 +1,6 @@
 <template>
     <div class="contained contact-wrapper">
-        <form name="contact" method="POST" netlify>
+        <form name="tpgw-contact" data-netlify="true" method="POST" >
             <label>Name:<input type="text" name="name" placeholder="Your Name" /></label>   
             <label>Email:<input type="email" name="email" placeholder="Your Email" /></label>
             <label>Telephone:<input type="tel" name="tel" placeholder="Your Telephone" /></label>
@@ -19,7 +19,7 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 
     @import "./src/assets/scss/base/_variables.scss";
     @import "./src/assets/scss/base/_mediaquery.scss";
