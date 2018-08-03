@@ -8,7 +8,6 @@
                 <img :src="img" alt="">
             </div>
 
-
         </div>
         <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
@@ -46,7 +45,6 @@ export default {
             autoplay: {
                 delay: 5000,
             },
-            // Navigation arrows
             navigation: {
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
@@ -54,8 +52,31 @@ export default {
             pagination: {
                 el: '.swiper-pagination',
                 type: 'bullets',
+            },
+            on: {
+                init: function () {
+                    var width = window.innerWidth
+                    var height = window.innerHeight
+                    var container = document.querySelector('.services');                                              
+                    // console.log(this)
+                    for (let i = 0; i < this.slides.length; i++) {
+                        var imgForDiv = this.imagesToLoad[i].src.replace("/upload/ar_1.777777,c_fill,q_auto:good,w_900/", "/upload/c_fill,q_50,e_blur:900,w_" + width + ",h_"+ height +"/");
+                        var element = document.createElement("DIV")
+                        element.style.backgroundImage = "url('"+ imgForDiv +"')"
+                        element.classList.add("bkg-blurs")  
+                        container.appendChild(element) 
+                    }
+                    var bkgBoxes = document.querySelectorAll('.bkg-blurs');
+                    TweenMax.set('.bkg-blurs', { autoAlpha: 0 })
+                    TweenMax.set(bkgBoxes[this.activeIndex], { autoAlpha: 0.4 })
+                },
             }
         })
+        mySwiper.on('slideChange', function () {
+            var bkgBoxes = document.querySelectorAll('.bkg-blurs');
+            TweenMax.to(bkgBoxes[this.previousIndex], 0.3, { autoAlpha: 0 })
+            TweenMax.to(bkgBoxes[this.activeIndex], 0.3, { autoAlpha: 0.4 })
+        });
     }
 }
 </script>

@@ -63,6 +63,9 @@ export default {
             padding: 10px;
             margin: 0 10px;
             font-size: 20px;
+            &.active {
+                font-weight: 800;
+            }
         }
         a {
             text-decoration: none;

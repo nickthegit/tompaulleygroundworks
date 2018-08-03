@@ -48,15 +48,23 @@ export default {
     }
   },
   mounted () {
-    // TweenMax.to('h1', 1, {x: 50})
+    var servicesOnce = 'on';
     new fullpage('#fullpage', {
-      // anchors: ['firstPage', 'secondPage', 'thirdPage', 'fourthPage'],
       licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
-      menu: '#navMenu'
-      // options here
-      // autoScrolling:true,
-      // scrollHorizontally: true
+      menu: '#navMenu',
+      onLeave: function(origin, destination, direction){
+        if(destination.anchor == "services" && direction =='down' && servicesOnce == 'on'){
+              const servTl = new TimelineLite({onComplete: function() { servicesOnce = 'off' }}).delay(0.75);
+              servTl.fromTo('.services__grid-wrapper article', 0.5, {y: -50, autoAlpha: 0}, {y: 0, autoAlpha: 1}) 
+              .fromTo('.services__grid-wrapper aside', 0.75, {y: 50, autoAlpha: 0}, {y: 0, autoAlpha: 1}, "-=0.1");        
+        }
+      }
     })
+    const tl = new TimelineLite();
+    tl.fromTo('.hero', 0.75, {autoAlpha: 0},{autoAlpha:1}, "start")
+      .fromTo('.home-wrapper img', 0.3, {y: -50, autoAlpha: 0}, {y: 0, autoAlpha: 1}, "+=0.2")
+      .fromTo('.home-wrapper h1', 0.3, {y: 50, autoAlpha: 0}, {y: 0, autoAlpha: 1}, "+=0.1")
+      .fromTo('header', 0.3, {y: "-100%", autoAlpha: 0}, {y: "0%", autoAlpha: 1}, "-=0");
   }
 }
 </script>
