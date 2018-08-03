@@ -18,9 +18,12 @@
     "gsap": "^2.0.1",
     "node-sass": "^4.9.2",
     "nuxt": "^1.0.0",
+    "rellax": "^1.6.2",
     "sass-loader": "^7.1.0",
+    "smooth-scroll": "^14.2.1",
     "swiper": "^4.3.5",
-    "vue-style-loader": "^4.1.1"
+    "vue-style-loader": "^4.1.1",
+    "waypoints": "^4.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

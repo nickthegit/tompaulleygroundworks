@@ -57,7 +57,7 @@ export default {
                 init: function () {
                     var width = window.innerWidth
                     var height = window.innerHeight
-                    var container = document.querySelector('.services');                                              
+                    var container = document.querySelector('.blurs');                                              
                     // console.log(this)
                     for (let i = 0; i < this.slides.length; i++) {
                         var imgForDiv = this.imagesToLoad[i].src.replace("/upload/ar_1.777777,c_fill,q_auto:good,w_900/", "/upload/c_fill,q_50,e_blur:900,w_" + width + ",h_"+ height +"/");
@@ -68,14 +68,14 @@ export default {
                     }
                     var bkgBoxes = document.querySelectorAll('.bkg-blurs');
                     TweenMax.set('.bkg-blurs', { autoAlpha: 0 })
-                    TweenMax.set(bkgBoxes[this.activeIndex], { autoAlpha: 0.4 })
+                    TweenMax.set(bkgBoxes[this.activeIndex], { autoAlpha: 0.8 })
                 },
             }
         })
         mySwiper.on('slideChange', function () {
             var bkgBoxes = document.querySelectorAll('.bkg-blurs');
             TweenMax.to(bkgBoxes[this.previousIndex], 0.3, { autoAlpha: 0 })
-            TweenMax.to(bkgBoxes[this.activeIndex], 0.3, { autoAlpha: 0.4 })
+            TweenMax.to(bkgBoxes[this.activeIndex], 0.3, { autoAlpha: 0.8 })
         });
     }
 }

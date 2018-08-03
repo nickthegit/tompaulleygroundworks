@@ -4,21 +4,27 @@
     <navigation/>
 
     <div>
-      <section class="section hero"  :style="{ 'background-image': 'url(' + hero.image + ')' }">
-        <a name="home"></a>
+    <div class="bkg-fixed">
+      <div class="blurs"></div>
+      <div class="mainBkg"></div>
+      <div class="overlay"></div>
+    </div>
+      <!-- <section class="section hero" :style="{ 'background-image': 'url(' + hero.image + ')' }"> -->
+        <section class="section hero">
+        <a id="home"></a>
         <div class="home-wrapper">
-          <img src="https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto:good,w_650/v1533210167/tpgw/tom-paulley-groundworks-logo.png" alt="Tom Paulley Groundworks Logo">
-          <h1>{{ hero.strapline }}</h1>
+          <img class="rellax" data-rellax-speed="5" src="https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto:good,w_650/v1533210167/tpgw/tom-paulley-groundworks-logo.png" alt="Tom Paulley Groundworks Logo">
+          <h1 class="rellax" data-rellax-speed="5">{{ hero.strapline }}</h1>
         </div>
       </section>
 
-      <section class="section services">
-        <a name="services"></a>
+      <section id="services" class="section services">
+        <a id="services"></a>
         <services/> 
       </section>
 
-      <section class="section">
-        <a name="contact"></a>
+      <section id="contact" class="section">
+        <a id="contact"></a>
         <contact/>
       </section>
 
@@ -51,6 +57,37 @@ export default {
   },
   mounted () {
     if (process.browser) {
+      // Rellax
+      var Rellax = require('rellax')
+      var rellax = new Rellax('.rellax');
+      // Waypoints
+      require('waypoints/lib/noframework.waypoints.min');
+      var waypointToServices = new Waypoint({
+        element: document.getElementById('services'),
+        handler: function(direction) {
+          if (direction == 'down') {
+            TweenMax.to('.mainBkg', 0.5, { autoAlpha:0 } )
+          } else {
+            TweenMax.to('.mainBkg', 0.5, { autoAlpha:1 } )
+          }
+        },
+        offset: "35%"
+      })
+      var waypointToContact = new Waypoint({
+        element: document.getElementById('contact'),
+        handler: function(direction) {
+          if (direction == 'down') {
+            TweenMax.to('.blurs', 0.5, { autoAlpha:0 } )
+          } else {
+            TweenMax.to('.blurs', 0.5, { autoAlpha:1 } )
+          }
+        },
+        offset: "30%" 
+      })
+      // Smooth scroll
+      var SmoothScroll = require('smooth-scroll')
+      var scroll = new SmoothScroll('a[href*="#"]');
+
       // var fullpage = require('fullpage.js');
       // var servicesOnce = 'on';
       // new fullpage('#fullpage', {
@@ -80,6 +117,26 @@ export default {
   @import "~/assets/scss/elements/_structure.scss";
   @import "~/assets/scss/base/_mediaquery.scss";
 
+  .bkg-fixed {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    z-index: -2;
+    div {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+    }
+    .overlay {
+      background: rgba($black,0.3);
+      z-index: 10;
+    }
+    .mainBkg {
+      background: url('https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto,w_1920,h_1080/v1533204731/tpgw/home-page.jpg');
+      z-index: 5;
+    }
+  }
+
   section {
     &.section {
       width: 100%;
@@ -91,7 +148,6 @@ export default {
   .hero {
     position: relative;
     .home-wrapper {
-      background: rgba($black,0.3);
       height: 100%;
       width: 100%;
       position: absolute;
@@ -108,10 +164,14 @@ export default {
         width: 100%;
         max-width: 800px;
         padding-top: 40px;
+        position: relative;
+        z-index: 1;
     }
     img {
       height: 32%;
       width: auto;
+      position: relative;
+      z-index: 2;
     }
     @include breakpoint(mobile) { 
       img {
