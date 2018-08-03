@@ -13,7 +13,14 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
-    "nuxt": "^1.0.0"
+    "css-loader": "^1.0.0",
+    "fullpage.js": "^3.0.2",
+    "gsap": "^2.0.1",
+    "node-sass": "^4.9.2",
+    "nuxt": "^1.0.0",
+    "sass-loader": "^7.1.0",
+    "swiper": "^4.3.5",
+    "vue-style-loader": "^4.1.1"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",
