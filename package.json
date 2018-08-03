@@ -1,51 +1,32 @@
 {
   "name": "tompaulleygroundworks",
-  "version": "0.1.0",
+  "version": "1.0.0",
+  "description": "Nuxt.js project",
+  "author": "nickthegit <nick@rosielee.co.uk>",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "precommit": "npm run lint"
   },
   "dependencies": {
-    "fullpage.js": "^3.0.1",
+    "css-loader": "^1.0.0",
+    "fullpage.js": "^3.0.2",
     "gsap": "^2.0.1",
     "node-sass": "^4.9.2",
-    "sass-loader": "^7.0.3",
+    "nuxt": "^1.0.0",
+    "sass-loader": "^7.1.0",
     "swiper": "^4.3.5",
-    "vue": "^2.5.16"
+    "vue-style-loader": "^4.1.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.0-rc.5",
-    "@vue/cli-plugin-eslint": "^3.0.0-rc.5",
-    "@vue/cli-service": "^3.0.0-rc.5",
-    "@vue/eslint-config-standard": "^3.0.0-rc.5",
-    "vue-template-compiler": "^2.5.16"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "@vue/standard"
-    ],
-    "rules": {},
-    "parserOptions": {
-      "parser": "babel-eslint"
-    }
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {
-        "browsers": ["last 2 versions"]
-      }
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "babel-eslint": "^8.2.1",
+    "eslint": "^4.15.0",
+    "eslint-friendly-formatter": "^3.0.0",
+    "eslint-loader": "^1.7.1",
+    "eslint-plugin-vue": "^4.0.0"
+  }
 }
