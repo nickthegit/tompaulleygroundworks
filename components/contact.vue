@@ -81,6 +81,7 @@ export default {
         max-width: 720px;
         grid-column: 1 / 2;
         grid-row: 1 / 2;
+        justify-self: end;
         display: flex;
         align-items: center;
         text-align: left;
