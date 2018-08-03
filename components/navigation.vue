@@ -5,9 +5,9 @@
         </a>
         <nav>
             <ul id="navMenu">
-                <li @click="toggleNav" data-menuanchor="home" class="active"><a href="#home">Home</a></li>
-                <li @click="toggleNav" data-menuanchor="services"><a href="#services">Services</a></li>
-                <li @click="toggleNav" data-menuanchor="contact"><a href="#contact">Contact</a></li>
+                <li @click="toggleNav"><a href="#home">Home</a></li>
+                <li @click="toggleNav"><a href="#services">Services</a></li>
+                <li @click="toggleNav"><a href="#contact">Contact</a></li>
             </ul>
         </nav> 
         <button class="hamburger hamburger--collapse" :class="{isActive: isActive}" @click="toggleNav" type="button">

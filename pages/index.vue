@@ -3,19 +3,22 @@
 
     <navigation/>
 
-    <div id="fullpage">
-      <section class="section hero" data-anchor="home" :style="{ 'background-image': 'url(' + hero.image + ')' }">
+    <div>
+      <section class="section hero"  :style="{ 'background-image': 'url(' + hero.image + ')' }">
+        <a name="home"></a>
         <div class="home-wrapper">
           <img src="https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto:good,w_650/v1533210167/tpgw/tom-paulley-groundworks-logo.png" alt="Tom Paulley Groundworks Logo">
           <h1>{{ hero.strapline }}</h1>
         </div>
       </section>
 
-      <section class="section services" data-anchor="services">
+      <section class="section services">
+        <a name="services"></a>
         <services/> 
       </section>
 
-      <section class="section" data-anchor="contact">
+      <section class="section">
+        <a name="contact"></a>
         <contact/>
       </section>
 
@@ -48,24 +51,24 @@ export default {
   },
   mounted () {
     if (process.browser) {
-      var fullpage = require('fullpage.js');
-      var servicesOnce = 'on';
-      new fullpage('#fullpage', {
-        licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
-        menu: '#navMenu',
-        onLeave: function(origin, destination, direction){
-          if(destination.anchor == "services" && direction =='down' && servicesOnce == 'on'){
-                const servTl = new TimelineLite({onComplete: function() { servicesOnce = 'off' }}).delay(0.75);
-                servTl.fromTo('.services__grid-wrapper article', 0.5, {y: -50, autoAlpha: 0}, {y: 0, autoAlpha: 1}) 
-                .fromTo('.services__grid-wrapper aside', 0.75, {y: 50, autoAlpha: 0}, {y: 0, autoAlpha: 1}, "-=0.1");        
-          }
-        }
-      })
-      const tl = new TimelineLite();
-      tl.fromTo('.hero', 0.75, {autoAlpha: 0},{autoAlpha:1}, "start")
-        .fromTo('.home-wrapper img', 0.3, {y: -50, autoAlpha: 0}, {y: 0, autoAlpha: 1}, "+=0.2")
-        .fromTo('.home-wrapper h1', 0.3, {y: 50, autoAlpha: 0}, {y: 0, autoAlpha: 1}, "+=0.1")
-        .fromTo('header', 0.3, {y: "-100%", autoAlpha: 0}, {y: "0%", autoAlpha: 1}, "-=0");
+      // var fullpage = require('fullpage.js');
+      // var servicesOnce = 'on';
+      // new fullpage('#fullpage', {
+      //   licenseKey: 'OPEN-SOURCE-GPLV3-LICENSE',
+      //   menu: '#navMenu',
+      //   onLeave: function(origin, destination, direction){
+      //     if(destination.anchor == "services" && direction =='down' && servicesOnce == 'on'){
+      //           const servTl = new TimelineLite({onComplete: function() { servicesOnce = 'off' }}).delay(0.75);
+      //           servTl.fromTo('.services__grid-wrapper article', 0.5, {y: -50, autoAlpha: 0}, {y: 0, autoAlpha: 1}) 
+      //           .fromTo('.services__grid-wrapper aside', 0.75, {y: 50, autoAlpha: 0}, {y: 0, autoAlpha: 1}, "-=0.1");        
+      //     }
+      //   }
+      // })
+      // const tl = new TimelineLite();
+      // tl.fromTo('.hero', 0.75, {autoAlpha: 0},{autoAlpha:1}, "start")
+      //   .fromTo('.home-wrapper img', 0.3, {y: -50, autoAlpha: 0}, {y: 0, autoAlpha: 1}, "+=0.2")
+      //   .fromTo('.home-wrapper h1', 0.3, {y: 50, autoAlpha: 0}, {y: 0, autoAlpha: 1}, "+=0.1")
+      //   .fromTo('header', 0.3, {y: "-100%", autoAlpha: 0}, {y: "0%", autoAlpha: 1}, "-=0");
     }
   }
 }
@@ -77,11 +80,21 @@ export default {
   @import "~/assets/scss/elements/_structure.scss";
   @import "~/assets/scss/base/_mediaquery.scss";
 
+  section {
+    &.section {
+      width: 100%;
+      min-height: 100vh;
+      position: relative;
+    }
+  }
+
   .hero {
     position: relative;
     .home-wrapper {
       background: rgba($black,0.3);
       height: 100%;
+      width: 100%;
+      position: absolute;
       display: flex;
       flex-direction: column;
       align-items: center;
