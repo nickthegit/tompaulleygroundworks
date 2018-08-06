@@ -1,7 +1,7 @@
 <template>
     <div class="contact-wrapper">
         <section class="form-wrap">
-            <form name="tpgw-contact" netlify method="POST" enctype="multipart/form-data" action="/thanks">
+            <form name="tpgw-contact" netlify method="POST" enctype="multipart/form-data" action="/thanks.html">
                 <label>Name:<input type="text" name="name" /></label>   
                 <label>Email:<input type="email" name="email" /></label>
                 <label>Telephone:<input type="tel" name="tel" /></label>
