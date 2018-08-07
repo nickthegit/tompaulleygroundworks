@@ -1,8 +1,13 @@
 <template>
     <div class="contact-wrapper">
         <section class="form-wrap">
-            <form name="tpgw-contact" method="POST" action="/thanks.html" netlify>
+            <form name="tpgw-contact" method="POST" netlify-honeypot="bot-field" action="/thanks.html" netlify>
                 <input type="hidden" name="form-name" value="tpgw-contact" />
+    
+                <p class="hidden-input">
+                    <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
+                </p>
+
                 <label>Name:<input type="text" name="name" /></label>   
                 <label>Email:<input type="email" name="email" /></label>
                 <label>Telephone:<input type="tel" name="tel" /></label>
@@ -35,6 +40,10 @@ export default {
 
     @import "~/assets/scss/base/_variables.scss";
     @import "~/assets/scss/base/_mediaquery.scss";
+
+    .hidden-input {
+        display: none;
+    }
 
     .contact-wrapper {
         // padding-top: $headerHeight;
