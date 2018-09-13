@@ -3,11 +3,9 @@
         <section class="form-wrap">
             <form name="tpgw-contact" method="POST" netlify-honeypot="bot-field" action="/thanks.html" netlify>
                 <input type="hidden" name="form-name" value="tpgw-contact" />
-    
                 <p class="hidden-input">
                     <label>Don’t fill this out if you're human: <input name="bot-field" /></label>
                 </p>
-
                 <label>Name:<input type="text" name="name" /></label>   
                 <label>Email:<input type="email" name="email" /></label>
                 <label>Telephone:<input type="tel" name="tel" /></label>

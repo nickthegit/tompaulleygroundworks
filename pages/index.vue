@@ -107,13 +107,16 @@ export default {
       width: 100%;
       height: 100%;
       position: absolute;
+      background-position: 50% 50%;
+      background-size: cover;
+      background-repeat: no-repeat;
     }
     .overlay {
       background: rgba($black,0.3);
       z-index: 10;
     }
     .mainBkg {
-      background: url('https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto,w_1920,h_1080/v1533204731/tpgw/home-page.jpg');
+      background-image: url('https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto,w_1920,h_1080/v1533204731/tpgw/home-page.jpg');
       z-index: 5;
     }
   }
