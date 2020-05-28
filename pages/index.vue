@@ -1,95 +1,99 @@
 <template>
   <div id="app">
-
-    <navigation/>
+    <navigation />
 
     <div>
-    <div class="bkg-fixed">
-      <div class="blurs"></div>
-      <div class="mainBkg"></div>
-      <div class="overlay"></div>
-    </div>
+      <div class="bkg-fixed">
+        <div class="blurs"></div>
+        <div class="mainBkg"></div>
+        <div class="overlay"></div>
+      </div>
       <!-- <section class="section hero" :style="{ 'background-image': 'url(' + hero.image + ')' }"> -->
-        <section class="section hero">
+      <section class="section hero">
         <a id="home"></a>
         <div class="home-wrapper">
-          <img class="rellax" data-rellax-speed="5" src="https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto:good,w_650/v1533210167/tpgw/tom-paulley-groundworks-logo.png" alt="Tom Paulley Groundworks Logo">
+          <img
+            class="rellax"
+            data-rellax-speed="5"
+            src="https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto:good,w_650/v1533210167/tpgw/tom-paulley-groundworks-logo.png"
+            alt="Tom Paulley Groundworks Logo"
+          />
           <h1 class="rellax" data-rellax-speed="5">{{ hero.strapline }}</h1>
         </div>
       </section>
 
       <section id="services" class="section services">
         <a id="services"></a>
-        <services/> 
+        <services />
       </section>
 
       <section id="contact" class="section">
         <a id="contact"></a>
-        <contact/>
+        <contact />
       </section>
-
     </div>
-
   </div>
 </template>
 
 <script>
-import navigation from '~/components/navigation.vue'
-import services from '~/components/services.vue'
-import contact from '~/components/contact.vue'
+  import navigation from "~/components/navigation.vue";
+  import services from "~/components/services.vue";
+  import contact from "~/components/contact.vue";
 
-import TweenMax from 'gsap'
+  import gsap from "gsap";
 
-export default {
-  name: 'app',
-  components: {
-    navigation,
-    services,
-    contact
-  },
-  data() {
-    return {
-      hero: {
-        image: 'https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto,w_1920,h_1080/v1533204731/tpgw/home-page.jpg',
-        strapline: 'Tom Paulley Groundworks is a Dorset based ground works company offering services towards all aspects of groundworks, from excavations to drainage and surfacing to landscaping, serving all neighbouring counties.'
+  export default {
+    name: "app",
+    components: {
+      navigation,
+      services,
+      contact
+    },
+    data() {
+      return {
+        hero: {
+          image:
+            "https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto,w_1920,h_1080/v1533204731/tpgw/home-page.jpg",
+          strapline:
+            "Tom Paulley Groundworks is a Dorset based ground works company offering services towards all aspects of groundworks, from excavations to drainage and surfacing to landscaping, serving all neighbouring counties."
+        }
+      };
+    },
+    mounted() {
+      if (process.browser) {
+        // Rellax
+        var Rellax = require("rellax");
+        var rellax = new Rellax(".rellax");
+        // Waypoints
+        require("waypoints/lib/noframework.waypoints.min");
+        var waypointToServices = new Waypoint({
+          element: document.getElementById("services"),
+          handler: function(direction) {
+            if (direction == "down") {
+              gsap.to(".mainBkg", 0.5, { autoAlpha: 0 });
+            } else {
+              gsap.to(".mainBkg", 0.5, { autoAlpha: 1 });
+            }
+          },
+          offset: "35%"
+        });
+        var waypointToContact = new Waypoint({
+          element: document.getElementById("contact"),
+          handler: function(direction) {
+            if (direction == "down") {
+              gsap.to(".blurs", 0.5, { autoAlpha: 0 });
+            } else {
+              gsap.to(".blurs", 0.5, { autoAlpha: 1 });
+            }
+          },
+          offset: "30%"
+        });
+        // Smooth scroll
+        var SmoothScroll = require("smooth-scroll");
+        var scroll = new SmoothScroll('a[href*="#"]');
       }
     }
-  },
-  mounted () {
-    if (process.browser) {
-      // Rellax
-      var Rellax = require('rellax')
-      var rellax = new Rellax('.rellax');
-      // Waypoints
-      require('waypoints/lib/noframework.waypoints.min');
-      var waypointToServices = new Waypoint({
-        element: document.getElementById('services'),
-        handler: function(direction) {
-          if (direction == 'down') {
-            TweenMax.to('.mainBkg', 0.5, { autoAlpha:0 } )
-          } else {
-            TweenMax.to('.mainBkg', 0.5, { autoAlpha:1 } )
-          }
-        },
-        offset: "35%"
-      })
-      var waypointToContact = new Waypoint({
-        element: document.getElementById('contact'),
-        handler: function(direction) {
-          if (direction == 'down') {
-            TweenMax.to('.blurs', 0.5, { autoAlpha:0 } )
-          } else {
-            TweenMax.to('.blurs', 0.5, { autoAlpha:1 } )
-          }
-        },
-        offset: "30%" 
-      })
-      // Smooth scroll
-      var SmoothScroll = require('smooth-scroll')
-      var scroll = new SmoothScroll('a[href*="#"]');
-    }
-  }
-}
+  };
 </script>
 
 <style lang="scss">
@@ -112,11 +116,11 @@ export default {
       background-repeat: no-repeat;
     }
     .overlay {
-      background: rgba($black,0.3);
+      background: rgba($black, 0.3);
       z-index: 10;
     }
     .mainBkg {
-      background-image: url('https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto,w_1920,h_1080/v1533204731/tpgw/home-page.jpg');
+      background-image: url("https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto,w_1920,h_1080/v1533204731/tpgw/home-page.jpg");
       z-index: 5;
     }
   }
@@ -143,13 +147,13 @@ export default {
       box-sizing: border-box;
     }
     h1 {
-        font-size: 3.4vh;
-        line-height: 3.6vh;
-        width: 100%;
-        max-width: 800px;
-        padding-top: 40px;
-        position: relative;
-        z-index: 1;
+      font-size: 3.4vh;
+      line-height: 3.6vh;
+      width: 100%;
+      max-width: 800px;
+      padding-top: 40px;
+      position: relative;
+      z-index: 1;
     }
     img {
       height: 32%;
@@ -157,7 +161,7 @@ export default {
       position: relative;
       z-index: 2;
     }
-    @include breakpoint(mobile) { 
+    @include breakpoint(mobile) {
       img {
         width: 50%;
         height: auto;
