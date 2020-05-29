@@ -1,0 +1,22 @@
+// @font-face {
+//     font-family: 'work_sans_reg';
+//     src: url('/wp-content/themes/vmd/assets/fonts/worksans-regular-webfont.woff2') format('woff2'),
+//          url('/wp-content/themes/vmd/assets/fonts/worksans-regular-webfont.woff') format('woff');
+//     font-weight: normal;
+//     font-style: normal;
+// }
+
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap');
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Teko', sans-serif;
+  text-transform: uppercase;
+}
+
+h1 {
+  font-size: 62px;
+}
+
+body, p {
+  font-family: Helvetica, Arial, sans-serif;
+}
