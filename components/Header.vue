@@ -104,9 +104,11 @@
     top: 20px;
     right: 20px;
     z-index: 5;
-    display: none;
-    @include breakpoint(mobile) {
-      display: block;
+    &.hamburger {
+      display: none;
+      @include breakpoint(mobile) {
+        display: block;
+      }
     }
   }
   $hamburger-padding-x: 10px;
@@ -170,7 +172,7 @@
       text-decoration: none;
       font-size: 20px;
       line-height: 20px;
-      font-family: 'Teko', sans-serif;
+      font-family: $title_font;
       text-transform: uppercase;
       color: white;
       position: relative;

@@ -2,17 +2,20 @@
   <div>
     <main-header />
     <nuxt />
+    <main-footer />
   </div>
 </template>
 
 <script>
   import mainHeader from '~/components/Header.vue'
+  import mainFooter from '~/components/Footer.vue'
   export default {
     components: {
-      mainHeader
+      mainHeader,
+      mainFooter
     }
   }
 </script>
 
-<style>
+<style lang="scss">
 </style>

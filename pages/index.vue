@@ -1,16 +1,12 @@
 <template>
   <main>
-    <section>
+    <section :style="{backgroundImage: `url(${homeData.backgroundImg})`}">
       <div class="gradient-back"></div>
-      <img
-        class="main-logo"
-        src="https://res.cloudinary.com/nickjohn/image/upload/w_400/v1590703038/tpgw/tom-paulley-groundworks-logo.png"
-        alt="Tom Paulley Groundworks Logo"
-      />
+      <img class="main-logo" :src="homeData.logo.url" :alt="homeData.logo.alt" />
       <div class="headline_wrap">
-        <h1>Delivering all aspects of groundworks</h1>
-        <p>Tom Paulley Groundworks is a Dorset based ground works company offering services towards all aspects of groundworks, from excavations to drainage and surfacing to landscaping, serving all neighbouring counties.</p>
-        <button>CTA</button>
+        <h1>{{ homeData.headline }}</h1>
+        <p>{{ homeData.subText }}</p>
+        <nuxt-link :to="`/${homeData.cta.link}`" class="cta btn">{{homeData.cta.text}} →</nuxt-link>
       </div>
     </section>
   </main>
@@ -22,6 +18,26 @@
   export default {
     components: {
       Logo
+    },
+    data() {
+      return {
+        homeData: {
+          logo: {
+            url:
+              'https://res.cloudinary.com/nickjohn/image/upload/w_400/v1590703038/tpgw/tom-paulley-groundworks-logo.png',
+            alt: 'Tom Paulley Groundworks Logo'
+          },
+          headline: 'Delivering all aspects of groundworks',
+          subText:
+            'Tom Paulley Groundworks is a Dorset based ground works company offering services towards all aspects of groundworks, from excavations to drainage and surfacing to landscaping, serving all neighbouring counties.',
+          cta: {
+            text: 'Get a quote now!',
+            link: 'contact'
+          },
+          backgroundImg:
+            'https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto,w_1920,h_1080/v1533204731/tpgw/home-page.jpg'
+        }
+      }
     }
   }
 </script>
@@ -39,6 +55,9 @@
     display: grid;
     grid-template: 1fr auto 1fr / 320px 25% 25% 1fr;
     align-items: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     // justify-items: start
     @include breakpoint(mobile) {
       display: flex;
@@ -79,7 +98,7 @@
     @include breakpoint(mobile) {
       align-self: initial;
       padding: 0;
-      width: 60%;
+      width: 45%;
     }
   }
   .headline_wrap {

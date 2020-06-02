@@ -13,3 +13,22 @@ body {
   background: $black;
   color: $white;
 }
+
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  border: 2px solid $primary;
+  background: $primary;
+  color: $black;
+  font-family: 'Teko', sans-serif;
+  font-size: 24px;
+  margin: 20px 0;
+  border-radius: 10px;
+  padding: 10px 30px;
+  box-sizing: border-box;
+  cursor: pointer;
+  &:hover {
+    background: transparent;
+    color: $white;
+  }
+}
