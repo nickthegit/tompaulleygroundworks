@@ -68,7 +68,7 @@
 <style lang="scss" scoped>
   header {
     width: 100%;
-    height: 80px;
+    height: $header_height;
     position: fixed;
     z-index: 99;
   }

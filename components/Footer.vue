@@ -77,6 +77,9 @@
         fill: $white;
       }
     }
+    .label {
+      letter-spacing: 1px;
+    }
     @include breakpoint(tablet-mobile) {
       .tpgw-facebook,
       .tpgw-email {
