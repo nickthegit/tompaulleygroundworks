@@ -3,7 +3,7 @@
     <nuxt-link class="brand" to="/">
       <img
         @click="closeNav"
-        src="https://res.cloudinary.com/nickjohn/image/upload/w_400/v1590703038/tpgw/tom-paulley-groundworks-logo.png"
+        src="https://res.cloudinary.com/nickjohn/image/upload/w_400,q_auto,f_auto/v1590703038/tpgw/tom-paulley-groundworks-logo.png"
         alt="tpgw header logo"
       />
     </nuxt-link>

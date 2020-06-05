@@ -29,16 +29,32 @@
       },
       height: {
         type: [String, Number]
+      },
+      username: {
+        type: String,
+        default: 'nickjohn'
+      },
+      folder: {
+        type: String,
+        default: 'tpgw'
+      },
+      effects: {
+        type: [String, Boolean],
+        default: false
       }
     },
     methods: {
       buildString(width, height, isBackground) {
-        let isHalf = this.size === 'half' ? true : flase
+        let isHalf = this.size === 'half' ? true : false
         let h = isHalf && height ? height / 2 : height
         let w = isHalf ? width / 2 : width
-        return `https://res.cloudinary.com/jonserness/image/upload/${
+        let fx = this.effects ? `,${this.effects}` : ''
+
+        return `https://res.cloudinary.com/${this.username}/image/upload/${
           isBackground ? 'e_blur:300,' : ''
-        }c_fill,q_auto,f_auto,w_${w}${height ? ',h_' + h : ''}/tpgw/${this.image}`
+        }c_fill,w_${w}${height ? ',h_' + h : ''},q_auto:low,f_auto,g_auto${fx}${
+          this.folder ? '/' + this.folder : ''
+        }/${this.image}`
       }
     },
     computed: {
@@ -115,6 +131,8 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    top: 0;
+    left: 0;
     &.half {
       width: 50%;
       @include breakpoint(mobile) {

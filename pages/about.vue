@@ -11,6 +11,7 @@
           size="half"
           :style="{left: 0, top: 0}"
           alt="An image about Tom Paulley Groundworks"
+          folder="tpgw/homepage-slider"
         />
         <cloudinary-image
           image="tom-paulley-groundworks-logo.png"
