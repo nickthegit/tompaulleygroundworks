@@ -98,7 +98,7 @@
   main {
     width: 100%;
     height: 100%;
-    position: relative;
+    position: absolute;
   }
   section {
     width: 100%;
