@@ -3,20 +3,52 @@
     <article>
       <h1>{{ service.title }}</h1>
       <p v-if="service.description.length > 0">{{ service.description }}</p>
-      <p v-if="service.list.length > 0">
-        <ul>
+      <!-- <p > -->
+      <ul class="list">
         <li v-for="(item, itemIndex) in service.list" :key="`${itemIndex}-listitem`">{{ item }}</li>
-        </ul>
-      </p>
-      <section class="img-container" v-for="(imgSection, sectionIndex) in service.image_sections" :key="`${sectionIndex}-imgsection`" >
-        <div v-if="imgSection.type === 'slider'" class="slider"><h1>SLIDER</h1></div>
-        <div v-else :class="[imgSection.type, `length-${imgSection.images.length}`, `${imgSection.images.length % 2 ? 'odd' : 'even'}`]" >
-          <div class="img-wrap" v-for="(image, imgIndex) in imgSection.images" :key="`${imgIndex}-imgof-${sectionIndex}`">
-            <cloudinary-image
+      </ul>
+      <!-- </p> -->
+      <section
+        class="img-container"
+        v-for="(imgSection, sectionIndex) in service.image_sections"
+        :key="`${sectionIndex}-imgsection`"
+      >
+        <!-- slider -->
+        <div v-if="imgSection.type === 'slider'" class="slider">
+          <div class="glide_wrap">
+            <div class="glide">
+              <div class="glide__track" data-glide-el="track">
+                <ul class="glide__slides">
+                  <li
+                    class="glide__slide"
+                    v-for="(image, imgIndex) in imgSection.images"
+                    :key="`${imgIndex}-imgof-${sectionIndex}`"
+                  >
+                    <div class="img-wrap">
+                      <cloudinary-image-srcset
+                        :image="image"
+                        :alt="`An image about ${service.title} by Tom Paulley Groundworks`"
+                        folder="tpgw"
+                      />
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- gallery -->
+        <div
+          v-else
+          :class="[imgSection.type, `length-${imgSection.images.length}`, `${imgSection.images.length % 2 ? 'odd' : 'even'}`]"
+        >
+          <div
+            class="img-wrap"
+            v-for="(image, imgIndex) in imgSection.images"
+            :key="`${imgIndex}-imgof-${sectionIndex}`"
+          >
+            <cloudinary-image-srcset
               :image="image"
-              :width="800"
-              :height="600"
-              size="full"
               :alt="`An image about ${service.title} by Tom Paulley Groundworks`"
               folder="tpgw"
             />
@@ -29,10 +61,11 @@
 </template>
 
 <script>
- import cloudinaryImage from '~/components/cloudinaryImage.vue'
+  import cloudinaryImageSrcset from '~/components/cloudinaryImageSrcset.vue'
+  import Glide from '@glidejs/glide'
   export default {
-        components: {
-      cloudinaryImage
+    components: {
+      cloudinaryImageSrcset
     },
     async asyncData({ $content, params }) {
       const service = await $content('services', params.slug).fetch()
@@ -41,7 +74,15 @@
       }
     },
     mounted() {
-      console.log(this.service)
+      let isGlide = document.querySelector('.glide')
+      if (isGlide) {
+        let glider = new Glide('.glide', {
+          type: 'carousel',
+          autoplay: 3000,
+          hoverpause: true,
+          animationDuration: 1500
+        }).mount()
+      }
     }
   }
 </script>
@@ -61,16 +102,18 @@
     }
   }
   h1,
-  p {
+  p,
+  .list {
     width: 100%;
     max-width: $textContainer;
     margin: 0 auto;
     padding: 10px 40px;
-    ul {
+  }
+  .list {
+    padding-bottom: 40px;
+    li {
       width: 100%;
       max-width: $textContainer / 2;
-    }
-    li {
       padding: 10px 0;
       font-weight: 600;
       text-transform: uppercase;
@@ -89,31 +132,14 @@
         left: -6px;
         z-index: -1;
       }
-    }
-    @include breakpoint(mobile) {
-      padding: 10px 20px;
-    }
-  }
-  .back-to-services {
-    width: 100%;
-    max-width: $textContainer;
-    border-bottom: 1px solid rgba($white, 0.5);
-    text-decoration: none;
-    text-transform: uppercase;
-    font-size: 28px;
-    margin: 0 auto;
-    padding: 10px 40px;
-    color: $white;
-    font-family: $title_font;
-    display: block;
-    &:hover {
-      color: $primary;
+      @include breakpoint(mobile) {
+        padding: 10px 20px;
+      }
     }
   }
   .img-container {
     width: 100%;
     position: relative;
-    padding: 40px 0;
   }
   .gallery {
     width: 100%;
@@ -121,8 +147,15 @@
     display: grid;
     grid-template: auto / 1fr 1fr;
     grid-auto-flow: dense;
-    .img-wrap:last-child:nth-last-child(odd) {
-      grid-column: auto / span 2;
+    @include breakpoint(mobile) {
+      grid-template: auto / 100%;
+    }
+    &.odd {
+      .img-wrap {
+        &:last-child {
+          grid-column: auto / span 2;
+        }
+      }
     }
   }
   .img-wrap {
@@ -136,6 +169,44 @@
       height: 100%;
       object-fit: cover;
       transition: transform 0.25s ease-out;
+    }
+  }
+  @import 'node_modules/@glidejs/glide/src/assets/sass/glide.core';
+  .glide_wrap {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    top: 0;
+    left: 0;
+    z-index: 1;
+  }
+  .glide,
+  .glide__track,
+  .glide__slides,
+  .glide__slide {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .glide__slide {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  .back-to-services {
+    width: 100%;
+    max-width: $textContainer;
+    border-bottom: 1px solid rgba($white, 0.5);
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 28px;
+    margin: 0 auto;
+    padding: 40px 40px;
+    color: $white;
+    font-family: $title_font;
+    display: block;
+    &:hover {
+      color: $primary;
     }
   }
 </style>
