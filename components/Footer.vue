@@ -54,6 +54,7 @@
     font-family: $title_font;
     padding: 10px 20px;
     box-sizing: border-box;
+    box-shadow: 0px -1px 10px 1px rgba($black, 0.5);
     .contact {
       display: flex;
       align-items: center;

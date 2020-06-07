@@ -41,6 +41,7 @@ export default {
   ** Customize the progress-bar color
   */
   loading: { color: '#fff' },
+  pageTransition: 'page',
   /*
   ** Global CSS
   */
@@ -63,7 +64,8 @@ export default {
     '@nuxtjs/style-resources',
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
-    '@nuxt/content'
+    '@nuxt/content',
+    '@nuxtjs/sitemap'
   ],
   content: {
     // Options
@@ -74,16 +76,25 @@ export default {
       './assets/scss/_mediaquery.scss'
     ]
   },
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
-  axios: {
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://tpgw.co.uk',
+    exclude: [
+      '/thanks',
+      '/404'
+    ],
+    routes: async () => {
+      const { $content } = require('@nuxt/content')
+      const files = await $content('services').fetch()
+
+      return files.map(file => file.path === '/index' ? '/' : file.path)
+    }
   },
   /*
   ** Build configuration
   */
   generate: {
+    fallback: true,
     async routes() {
       const { $content } = require('@nuxt/content')
       const files = await $content('services').fetch()

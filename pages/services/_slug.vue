@@ -83,6 +83,11 @@
           animationDuration: 1500
         }).mount()
       }
+    },
+    head() {
+      return {
+        titleTemplate: `%s - Services - ${this.$route.params.slug}`
+      }
     }
   }
 </script>

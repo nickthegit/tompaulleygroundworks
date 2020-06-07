@@ -44,6 +44,11 @@
           ]
         }
       }
+    },
+    head() {
+      return {
+        titleTemplate: `About - %s`
+      }
     }
   }
 </script>

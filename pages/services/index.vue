@@ -56,7 +56,12 @@
       return {}
     },
     mounted() {
-      console.log(this.services)
+      // console.log(this.services)
+    },
+    head() {
+      return {
+        titleTemplate: `Services - %s`
+      }
     }
   }
 </script>
