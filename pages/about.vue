@@ -22,8 +22,8 @@
         />
       </section>
       <h2>Company info:</h2>
-      <p>Vat no: 049760567</p>
-      <p>sdf: dglihfgoih</p>
+      <p>Company Reg: 11479081</p>
+      <p>Vat reg: 321 6590 18</p>
     </article>
   </main>
 </template>
