@@ -123,6 +123,7 @@
     grid-auto-flow: dense;
     .img-wrap:last-child:nth-last-child(odd) {
       grid-column: auto / span 2;
+      //et
     }
   }
   .img-wrap {
