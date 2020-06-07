@@ -131,8 +131,6 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    top: 0;
-    left: 0;
     &.half {
       width: 50%;
       @include breakpoint(mobile) {

@@ -41,7 +41,11 @@ export default {
     '@nuxtjs/style-resources',
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
+    '@nuxt/content'
   ],
+  content: {
+    // Options
+  },
   styleResources: {
     scss: [
       './assets/scss/_variables.scss', // use underscore "_" & also file extension ".scss"

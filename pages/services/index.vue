@@ -35,7 +35,7 @@
                 />
               </picture>
             </section>
-            <h2>{{ service.name }}</h2>
+            <h2>{{ service.title }}</h2>
             <div class="gradient"></div>
           </article>
         </nuxt-link>
@@ -46,41 +46,17 @@
 
 <script>
   export default {
-    data() {
+    async asyncData({ $content }) {
+      const services = await $content('services').fetch()
       return {
-        services: [
-          {
-            slug: 'concrete',
-            name: 'Concrete',
-            feature_img: 'Unit_Appron_2'
-          },
-          {
-            slug: 'drainage',
-            name: 'Drainage',
-            feature_img: 'treatment_plant_6'
-          },
-          {
-            slug: 'driveways-and-kerbing',
-            name: 'Driveways and Kerbing',
-            feature_img: 'Disabled_drop_off_5'
-          },
-          {
-            slug: 'excavations',
-            name: 'Excavations',
-            feature_img: 'Inspection_Pit_4'
-          },
-          {
-            slug: 'foundations',
-            name: 'Foundations',
-            feature_img: 'House_Extension_5'
-          },
-          {
-            slug: 'landscaping',
-            name: 'Landscaping',
-            feature_img: 'decking_3'
-          }
-        ]
+        services
       }
+    },
+    data() {
+      return {}
+    },
+    mounted() {
+      console.log(this.services)
     }
   }
 </script>
@@ -130,9 +106,13 @@
       position: relative;
       width: 100%;
       height: 100%;
-      background: darkseagreen;
-      &:nth-child(odd) {
-        background: darkslateblue;
+      &:hover {
+        picture {
+          opacity: 0.5;
+        }
+        img {
+          transform: scale(1.2);
+        }
       }
     }
     h2 {
@@ -176,11 +156,14 @@
       top: 0;
       left: 0;
       z-index: 1;
+      opacity: 1;
+      transition: opacity 0.25s ease-out;
     }
     img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.25s ease-out;
     }
   }
 </style>

@@ -1,0 +1,32 @@
+{
+  "title": "Drainage",
+  "description": "Our drainage services cover a wide variety of domestic, commercial and indusrtial needs.",
+  "list": [
+    "Installation of Septic",
+    "Treatment or Cess tanks",
+    "Soak away installations",
+    "Domestic and Commercial waste drainage",
+    "Land drainage and ditch excavations/clearing And surface water/rain water drainage"
+  ],
+  "feature_img": "treatment_plant_6",
+  "image_sections": [
+    {
+      "title": "",
+      "images": [
+        "campsite-cess-pit-1",
+        "campsite-cess-pit-2",
+        "campsite-cess-pit-3",
+        "campsite-cess-pit-4",
+        "septic-tank-1",
+        "septic-tank-2",
+        "septic-tank-3",
+        "treatment-plant-1",
+        "treatment-plant-2",
+        "treatment-plant-3",
+        "treatment-plant-4",
+        "treatment-plant-5",
+        "treatment-plant-6"
+      ]
+    }
+  ]
+}

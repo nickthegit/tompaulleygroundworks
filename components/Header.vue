@@ -50,7 +50,7 @@
       }
     },
     mounted() {
-      console.log(this.$route.name)
+      // console.log(this.$route.name)
     },
     head() {
       return {
