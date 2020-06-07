@@ -6,6 +6,7 @@
   "image_sections": [
     {
       "title": "Power Floating",
+      "type": "slider",
       "images": [
         "power-floating-1",
         "power-floating-2",
@@ -25,6 +26,7 @@
     },
     {
       "title": "Domestic Concrete",
+      "type": "gallery",
       "images": [
         "basketball-court-1",
         "basketball-court-2",
@@ -43,6 +45,7 @@
     },
     {
       "title": "Commercial Concrete",
+      "type": "slider",
       "images": [
         "barn-floor-1",
         "barn-floor-2",

@@ -2,5 +2,43 @@
   "title": "Excavations",
   "description": "Excavations can mean anything from lake digs and bulk reduce digs, to percolation tests and bund building. And we cover them all, ask us to see what we can do for you!",
   "list": [],
-  "feature_img": "Inspection_Pit_4"
+  "feature_img": "Inspection_Pit_4",
+  "image_sections": [
+    {
+      "title": "",
+      "type": "gallery",
+      "images": [
+        "driveway-reduce-dig-1",
+        "driveway-reduce-dig-2",
+        "driveway-reduce-dig-3",
+        "driveway-reduce-dig-4"
+      ]
+    },
+    {
+      "title": "",
+      "type": "slider",
+      "images": [
+        "inspection-pit-1",
+        "inspection-pit-2",
+        "inspection-pit-3",
+        "inspection-pit-4"
+      ]
+    },
+    {
+      "title": "",
+      "type": "gallery",
+      "images": [
+        "opening-up-a-dissused-chalk-pit"
+      ]
+    },
+    {
+      "title": "",
+      "type": "gallery",
+      "images": [
+        "percolation-tests-1",
+        "percolation-tests-2",
+        "percolation-tests-3"
+      ]
+    }
+  ]
 }

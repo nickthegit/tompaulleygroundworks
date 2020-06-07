@@ -12,14 +12,27 @@
   "image_sections": [
     {
       "title": "",
+      "type": "gallery",
       "images": [
         "campsite-cess-pit-1",
         "campsite-cess-pit-2",
         "campsite-cess-pit-3",
-        "campsite-cess-pit-4",
+        "campsite-cess-pit-4"
+      ]
+    },
+    {
+      "title": "",
+      "type": "slider",
+      "images": [
         "septic-tank-1",
         "septic-tank-2",
-        "septic-tank-3",
+        "septic-tank-3"
+      ]
+    },
+    {
+      "title": "",
+      "type": "gallery",
+      "images": [
         "treatment-plant-1",
         "treatment-plant-2",
         "treatment-plant-3",

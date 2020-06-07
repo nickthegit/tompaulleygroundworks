@@ -2,5 +2,52 @@
   "title": "Driveways and Kerbing",
   "description": "A new driveway can transform the look of a property, why not even change the layout to add or use unused space more effectively ? Choose from a variety of surfaces, including Gravel, tarmac, resin bond and of course concrete.",
   "list": [],
-  "feature_img": "Disabled_drop_off_5"
+  "feature_img": "Disabled_drop_off_5",
+  "image_sections": [
+    {
+      "title": "",
+      "type": "slider",
+      "images": [
+        "disabled-drop-off-1",
+        "disabled-drop-off-2",
+        "disabled-drop-off-3",
+        "disabled-drop-off-4",
+        "disabled-drop-off-5"
+      ]
+    },
+    {
+      "title": "",
+      "type": "gallery",
+      "images": [
+        "driveway-1",
+        "driveway-2",
+        "driveway-3",
+        "driveway-4",
+        "driveway-5"
+      ]
+    },
+    {
+      "title": "",
+      "type": "gallery",
+      "images": [
+        "gravel-driveway-1",
+        "gravel-driveway-2"
+      ]
+    },
+    {
+      "title": "",
+      "type": "slider",
+      "images": [
+        "kerbing-1",
+        "kerbing-2",
+        "kerbing-3",
+        "kerbing-4",
+        "kerbing-5",
+        "kerbing-6",
+        "pathway-1",
+        "pathway-2",
+        "pathway-3"
+      ]
+    }
+  ]
 }

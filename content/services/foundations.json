@@ -2,5 +2,28 @@
   "title": "Foundations",
   "description": "ur services cover primary excavations to block/brickwork up to floor level, including all drainage and services, from extensions to full new build.",
   "list": [],
-  "feature_img": "House_Extension_5"
+  "feature_img": "House_Extension_5",
+  "image_sections": [
+    {
+      "title": "",
+      "type": "gallery",
+      "images": [
+        "garage-extension-1",
+        "garage-extension-2",
+        "garage-extension-3"
+      ]
+    },
+    {
+      "title": "",
+      "type": "slider",
+      "images": [
+        "house-extension-1",
+        "house-extension-2",
+        "house-extension-3",
+        "house-extension-4",
+        "house-extension-5",
+        "house-extension-6"
+      ]
+    }
+  ]
 }

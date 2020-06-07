@@ -9,5 +9,50 @@
     "Artificial grass Installation",
     "Turf laying"
   ],
-  "feature_img": "decking_3"
+  "feature_img": "decking_3",
+  "image_sections": [
+    {
+      "title": "Patios and Decking",
+      "type": "slider",
+      "images": [
+        "patio-4-4",
+        "patio-4-2",
+        "patio-4-3",
+        "patio-4-1",
+        "patio-2-2",
+        "patio-3",
+        "patio-2-1",
+        "patio-1-6",
+        "patio-1-7",
+        "patio-1-5",
+        "patio-1-4",
+        "patio-1-3",
+        "patio-1-2",
+        "patio-1-1",
+        "decking-3",
+        "decking-2",
+        "decking-1"
+      ]
+    },
+    {
+      "title": "Top Soiling",
+      "type": "slider",
+      "images": [
+        "top-soil-shaping-4",
+        "top-soil-shaping-3",
+        "top-soil-shaping-2",
+        "top-soil-shaping-1",
+        "top-soil-and-path",
+        "landscaping-around-new-walkway-4",
+        "landscaping-around-new-walkway-3",
+        "landscaping-around-new-walkway-2",
+        "landscaping-around-new-walkway-1",
+        "gardens-5",
+        "gardens-4",
+        "gardens-3",
+        "gardens-2",
+        "gardens-1"
+      ]
+    }
+  ]
 }

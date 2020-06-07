@@ -90,8 +90,8 @@
     width: 100%;
     display: grid;
     grid-template: auto / 1fr 1fr 1fr;
-    column-gap: 20px;
-    row-gap: 20px;
+    // column-gap: 20px;
+    // row-gap: 20px;
     @include breakpoint(tablet) {
       grid-template: auto / 1fr 1fr;
     }
