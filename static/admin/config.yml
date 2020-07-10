@@ -2,16 +2,69 @@ backend:
   name: git-gateway
   branch: master
 
+publish_mode: editorial_workflow
+
 media_folder: static/img
 public_folder: /img
 
+media_library:
+  name: cloudinary
+  # output_filename_only: true
+  config:
+    cloud_name: nickjohn
+    api_key: 791864281749114
+    default_transformations:
+      - - fetch_format: auto
+          quality: auto:low
+          crop: fill
+          gravity: auto
+
 collections:
-  - name: 'blog'
-    label: 'Blog'
+  - label: "Pages"
+    name: "pages"
+    files:
+      - label: "Home"
+        name: "home"
+        file: "content/pages/home.json"
+        fields:
+          - {label: Strapline, name: strapline, widget: string }
+          - {label: Intro, name: intro, widget: "text" }
+          - label: "Featured Images"
+            name: "thumbnails"
+            allow_multiple: true
+            widget: "image"
+            media_library:
+              config:
+                multiple: true
+      - label: "About"
+        name: "about"
+        slug: '{{slug}}'
+        extension: "md"
+        file: "content/pages/about"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Intro, name: intro, widget: markdown, buttons: [], editorComponents: []}
+          - label: "Featured Images"
+            name: "thumbnails"
+            allow_multiple: true
+            widget: "image"
+            media_library:
+              config:
+                max_files: 2
+                multiple: true
+          - {label: Company Info,  name: info, widget: markdown, buttons: [], editorComponents: []}
+      - label: "Contact"
+        name: "contact"
+        file: "content/pages/contact.json"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Intro, name: intro, widget: markdown}
+  - name: 'services'
+    label: 'Services'
     format: 'json'
-    folder: 'content/blog'
+    folder: 'content/services_test' # change when all content sorted
     create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    slug: '{{slug}}'
     editor:
       preview: false
     fields:
@@ -19,19 +72,23 @@ collections:
       - { label: 'Publish Date', name: 'date', widget: 'datetime' }
       - { label: 'Description', name: 'description', widget: 'string' }
       - { label: 'Body', name: 'body', widget: 'markdown' }
-  - label: "Pages"
-    name: "pages"
+  - label: "Global Setting"
+    name: "settings"
+    format: 'json'
     files:
-      - label: "About Page"
-        name: "about"
-        file: "content/pages/about.json"
+      - label: "Contact details"
+        name: "contact"
+        editor:
+          preview: false
+        file: "content/settings/contact.json"
         fields:
           - {label: Title, name: title, widget: string}
           - {label: Intro, name: intro, widget: markdown}
-          - label: Team
-            name: team
-            widget: list
-            fields:
-              - {label: Name, name: name, widget: string}
-              - {label: Position, name: position, widget: string}
-              - {label: Photo, name: photo, widget: image}
+      - label: "Site Meta"
+        name: "site_meta"
+        editor:
+          preview: false
+        file: "content/settings/meta.json"
+        fields:
+          - {label: Title, name: title, widget: string}
+          - {label: Intro, name: intro, widget: markdown}
