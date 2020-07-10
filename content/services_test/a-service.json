@@ -7,7 +7,8 @@
         "https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_auto:low/v1591539374/tpgw/top-soil-shaping-3.jpg",
         "https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_auto:low/v1591539364/tpgw/top-soil-shaping-1.jpg",
         "https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_auto:low/v1591539357/tpgw/landscaping-around-new-walkway-3.jpg"
-      ]
+      ],
+      "title": "a section title here"
     },
     {
       "type": "gallery",
@@ -20,7 +21,8 @@
         "https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_auto:low/v1591539247/tpgw/decking-3.jpg",
         "https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_auto:low/v1591539251/tpgw/patio-1-2.jpg",
         "https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_auto:low/v1591539252/tpgw/patio-1-1.jpg"
-      ]
+      ],
+      "title": "a section title here 2"
     }
   ],
   "title": "A service",
