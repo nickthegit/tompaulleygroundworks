@@ -1,4 +1,9 @@
 {
   "title": "About",
-  "intro": "dfewfwefg"
+  "intro": "dfewfwefg",
+  "thumbnails": [
+    "https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_auto:low/v1591539375/tpgw/top-soil-shaping-4.jpg",
+    "https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_auto:low/v1591539374/tpgw/top-soil-shaping-3.jpg",
+    "https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_auto:low/v1591539370/tpgw/landscaping-around-new-walkway-4.jpg"
+  ]
 }
