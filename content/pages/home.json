@@ -11,5 +11,9 @@
     "https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_auto:low/v1591204534/tpgw/homepage-slider/Treatment_plant_Septic_tank_and_Cess_Pit_Installations.jpg",
     "https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_auto:low/v1591204519/tpgw/homepage-slider/Power_Floated_Floors.jpg",
     "https://res.cloudinary.com/nickjohn/image/upload/c_fill,f_auto,g_auto,q_auto:low/v1591204518/tpgw/homepage-slider/Driveways.jpg"
-  ]
+  ],
+  "call_to_action": {
+    "link": "contact",
+    "text": "cta here"
+  }
 }
