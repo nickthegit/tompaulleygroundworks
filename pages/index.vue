@@ -25,9 +25,12 @@
       <div class="gradient-back"></div>
       <img class="main-logo" :src="homeData.logo.url" :alt="homeData.logo.alt" />
       <div class="headline_wrap">
-        <h1>{{ homeData.headline }}</h1>
-        <p>{{ homeData.subText }}</p>
-        <nuxt-link :to="`/${homeData.cta.link}`" class="cta btn">{{homeData.cta.text}} →</nuxt-link>
+        <h1>{{ home_data.strapline }}</h1>
+        <p>{{ home_data.intro }}</p>
+        <nuxt-link
+          :to="`/${home_data.call_to_action.link}`"
+          class="cta btn"
+        >{{home_data.call_to_action.text}} →</nuxt-link>
       </div>
     </section>
   </main>
@@ -36,13 +39,16 @@
 <script>
   import Glide from '@glidejs/glide'
   import cloudinaryImage from '~/components/cloudinaryImage.vue'
-  // import Glide, {
-  //   Controls,
-  //   Breakpoints
-  // } from '@glidejs/glide/dist/glide.modular.esm'
+
   export default {
     components: {
       cloudinaryImage
+    },
+    async asyncData({ $content, params }) {
+      const home_data = await $content('pages', 'home').fetch()
+      return {
+        home_data
+      }
     },
     data() {
       return {
@@ -76,6 +82,8 @@
       }
     },
     mounted() {
+      console.log(this.home_data)
+
       let glider = new Glide('.glide', {
         type: 'carousel',
         autoplay: 3500,

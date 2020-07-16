@@ -34,6 +34,12 @@
     components: {
       cloudinaryImage
     },
+    async asyncData({ $content, params }) {
+      const about_data = await $content('pages', 'about').fetch()
+      return {
+        about_data
+      }
+    },
     data() {
       return {
         aboutData: {
@@ -44,6 +50,9 @@
           ]
         }
       }
+    },
+    mounted() {
+      console.log(this.about_data)
     },
     head() {
       return {
