@@ -2,14 +2,11 @@ backend:
   name: git-gateway
   branch: master
 
-# publish_mode: editorial_workflow
-
 media_folder: static/img
 public_folder: /img
 
 media_library:
   name: cloudinary
-  # output_filename_only: true
   config:
     cloud_name: nickjohn
     api_key: 791864281749114
