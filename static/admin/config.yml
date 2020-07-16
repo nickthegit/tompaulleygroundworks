@@ -49,7 +49,6 @@ collections:
                 valueField: "{{slug}}"
       - label: "About"
         name: "about"
-        slug: '{{slug}}'
         file: "content/pages/about.json"
         fields:
           - {label: Title, name: title, widget: string}
