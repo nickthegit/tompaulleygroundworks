@@ -9,8 +9,14 @@ import schemaTypes from 'all:part:@sanity/base/schema-type'
 import home from "./pages/home";
 import about from "./pages/about";
 import contact from "./pages/contact";
+// settings
+import siteSettings from "./siteSettings";
+// services
+import services from "./services";
 // We import object and document schemas
 import blockContent from './blockContent'
+import blockContentBasic from "./blockContentBasic";
+import textBlock from "./blockContentSkeleton";
 import category from './category'
 import post from './post'
 import author from './author'
@@ -28,11 +34,18 @@ export default createSchema({
     home,
     about,
     contact,
-    post,
-    author,
-    category,
+    // settings
+    siteSettings,
+    // services
+    services,
+
+    // post,
+    // author,
+    // category,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
-    blockContent
+    blockContent,
+    blockContentBasic,
+    textBlock
   ])
 })
