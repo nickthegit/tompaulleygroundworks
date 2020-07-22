@@ -3,7 +3,7 @@
     <!-- <section :style="{backgroundImage: `url(${homeData.backgroundImg})`}"> -->
     <section>
       <div class="glide_wrap">
-        <div class="glide">
+        <!-- <div class="glide">
           <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
               <li
@@ -20,17 +20,14 @@
               </li>
             </ul>
           </div>
-        </div>
+        </div>-->
       </div>
       <div class="gradient-back"></div>
-      <img class="main-logo" :src="homeData.logo.url" :alt="homeData.logo.alt" />
+      <img class="main-logo" :src="logo.url" :alt="logo.alt" />
       <div class="headline_wrap">
         <h1>{{ home_data.strapline }}</h1>
-        <p>{{ home_data.intro }}</p>
-        <nuxt-link
-          :to="`/${home_data.call_to_action.link}`"
-          class="cta btn"
-        >{{home_data.call_to_action.text}} →</nuxt-link>
+        <block-content :blocks="home_data.intro" />
+        <nuxt-link :to="`/${home_data.ctaLink}`" class="cta btn">{{home_data.ctaText}} →</nuxt-link>
       </div>
     </section>
   </main>
@@ -38,26 +35,44 @@
 
 <script>
   import Glide from '@glidejs/glide'
+
   import cloudinaryImage from '~/components/cloudinaryImage.vue'
+
+  import client from '~/sanity.js'
+  import BlockContent from 'sanity-blocks-vue-component'
 
   export default {
     components: {
-      cloudinaryImage
+      cloudinaryImage,
+      BlockContent
     },
-    async asyncData({ $content, params }) {
-      const home_data = await $content('pages', 'home').fetch()
-      return {
-        home_data
-      }
+    async asyncData() {
+      const query = `*[_type == 'home'] {
+            _id,
+            ctaLink,
+            ctaText,
+            featureImages,
+            intro,
+            strapline
+          }
+        `
+      return client
+        .fetch(query)
+        .then(data => {
+          return { home_data: data[0] }
+        })
+        .catch(err => {
+          console.log(err)
+        })
     },
     data() {
       return {
+        logo: {
+          url:
+            'https://res.cloudinary.com/nickjohn/image/upload/w_400/v1590703038/tpgw/tom-paulley-groundworks-logo.png',
+          alt: 'Tom Paulley Groundworks Logo'
+        },
         homeData: {
-          logo: {
-            url:
-              'https://res.cloudinary.com/nickjohn/image/upload/w_400/v1590703038/tpgw/tom-paulley-groundworks-logo.png',
-            alt: 'Tom Paulley Groundworks Logo'
-          },
           headline: 'Delivering all aspects of groundworks',
           subText:
             'Tom Paulley Groundworks is a Dorset based ground works company offering services towards all aspects of groundworks, from excavations to drainage and surfacing to landscaping, serving all neighbouring counties.',
@@ -82,31 +97,25 @@
       }
     },
     mounted() {
-      console.log(this.home_data)
+      // console.log(this.home_data)
+      console.log('home data', this.home_data)
 
-      let glider = new Glide('.glide', {
-        type: 'carousel',
-        autoplay: 3500,
-        hoverpause: false,
-        animationDuration: 2000,
-        perView: 3,
-        breakpoints: {
-          860: {
-            perView: 2
-          },
-          600: {
-            perView: 1
-          }
-        }
-      }).mount()
+      // let glider = new Glide('.glide', {
+      //   type: 'carousel',
+      //   autoplay: 3500,
+      //   hoverpause: false,
+      //   animationDuration: 2000,
+      //   perView: 3,
+      //   breakpoints: {
+      //     860: {
+      //       perView: 2
+      //     },
+      //     600: {
+      //       perView: 1
+      //     }
+      //   }
+      // }).mount()
     }
-    // head() {
-    //   return {
-    //     script: [
-    //       { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }
-    //     ]
-    //   }
-    // }
   }
 </script>
 <style lang="scss" scoped>
