@@ -1,26 +1,31 @@
 <template>
   <main>
-    <!-- <section :style="{backgroundImage: `url(${homeData.backgroundImg})`}"> -->
     <section>
       <div class="glide_wrap">
-        <!-- <div class="glide">
+        <div class="glide">
           <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
-              <li
-                class="glide__slide"
-                v-for="(image, index) in homeData.sliderImages"
-                :key="`${index}homepageslide`"
-              >
-                <cloudinary-image
-                  :image="image"
-                  alt="An image about Tom Paulley Groundworks"
-                  folder="tpgw/homepage-slider"
-                  effects="e_grayscale"
+              <li class="glide__slide" v-for="image in home_data.featureImages" :key="image._key">
+                <image-src
+                  :alt="image.altText ? image.altText : 'homepage image for TPGW'"
+                  :image_40="urlFor(image).width(40).blur(50).auto('format').quality(10).url()"
+                  :image_480="urlFor(image).width(480).auto('format').quality(80).url()"
+                  :image_800="urlFor(image).width(800).auto('format').quality(80).url()"
+                  :image_960="urlFor(image).width(960).auto('format').quality(80).url()"
+                  :image_1000="urlFor(image).width(1000).auto('format').quality(80).url()"
+                  :image_1200="urlFor(image).width(1200).auto('format').quality(80).url()"
+                  :image_1400="urlFor(image).width(1400).auto('format').quality(80).url()"
+                  :image_1600="urlFor(image).width(1600).auto('format').quality(80).url()"
+                  :image_2000="urlFor(image).width(2000).auto('format').quality(80).url()"
+                  :image_2400="urlFor(image).width(2400).auto('format').quality(80).url()"
+                  :image_2800="urlFor(image).width(2800).auto('format').quality(80).url()"
+                  :image_3200="urlFor(image).width(3200).auto('format').quality(80).url()"
+                  :image_4000="urlFor(image).width(4000).auto('format').quality(80).url()"
                 />
               </li>
             </ul>
           </div>
-        </div>-->
+        </div>
       </div>
       <div class="gradient-back"></div>
       <img class="main-logo" :src="logo.url" :alt="logo.alt" />
@@ -37,25 +42,30 @@
   import Glide from '@glidejs/glide'
 
   import cloudinaryImage from '~/components/cloudinaryImage.vue'
+  import imageSrc from '~/components/ImageSrc.vue'
 
   import client from '~/sanity.js'
   import BlockContent from 'sanity-blocks-vue-component'
+  import imageUrlBuilder from '@sanity/image-url'
+
+  const builder = imageUrlBuilder(client)
 
   export default {
     components: {
       cloudinaryImage,
-      BlockContent
+      BlockContent,
+      imageSrc
     },
     async asyncData() {
       const query = `*[_type == 'home'] {
-            _id,
-            ctaLink,
-            ctaText,
-            featureImages,
-            intro,
-            strapline
-          }
-        `
+                                                                    _id,
+                                                                    ctaLink,
+                                                                    ctaText,
+                                                                    featureImages,
+                                                                    intro,
+                                                                    strapline
+                                                                  }
+                                                                `
       return client
         .fetch(query)
         .then(data => {
@@ -96,25 +106,30 @@
         }
       }
     },
+    methods: {
+      urlFor(source) {
+        return builder.image(source)
+      }
+    },
     mounted() {
       // console.log(this.home_data)
-      console.log('home data', this.home_data)
+      // console.log('home data', this.home_data)
 
-      // let glider = new Glide('.glide', {
-      //   type: 'carousel',
-      //   autoplay: 3500,
-      //   hoverpause: false,
-      //   animationDuration: 2000,
-      //   perView: 3,
-      //   breakpoints: {
-      //     860: {
-      //       perView: 2
-      //     },
-      //     600: {
-      //       perView: 1
-      //     }
-      //   }
-      // }).mount()
+      let glider = new Glide('.glide', {
+        type: 'carousel',
+        autoplay: 3500,
+        hoverpause: false,
+        animationDuration: 2000,
+        perView: 3,
+        breakpoints: {
+          860: {
+            perView: 2
+          },
+          600: {
+            perView: 1
+          }
+        }
+      }).mount()
     }
   }
 </script>
