@@ -4,38 +4,30 @@
       <h1>Services</h1>
       <section class="services__grid">
         <nuxt-link
-          v-for="(service, index) in services"
-          :key="`${index}-services`"
-          :to="`services/${service.slug}`"
+          v-for="service in services"
+          :key="service._id"
+          :to="`services/${service.slug.current}`"
         >
           <article>
             <section class="img-wrap">
-              <picture
-                :style="{backgroundImage: `url(https://res.cloudinary.com/nickjohn/image/upload/c_fill,w_64,h_36,q_auto:low,f_auto,g_auto,e_blur:600/tpgw/${service.feature_img})` }"
-              >
-                <source
-                  :srcset="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,w_480,h_320,q_auto:low,f_auto,g_auto/tpgw/${service.feature_img}`"
-                  media="(max-width: 480px)"
-                />
-                <source
-                  :srcset="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,w_400,h_267,q_auto:low,f_auto,g_auto/tpgw/${service.feature_img}`"
-                  media="(max-width: 1200px)"
-                />
-                <source
-                  :srcset="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,w_600,h_400,q_auto:low,f_auto,g_auto/tpgw/${service.feature_img}`"
-                  media="(max-width: 1600px)"
-                />
-                <source
-                  :srcset="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,w_800,h_533,q_auto:low,f_auto,g_auto/tpgw/${service.feature_img}`"
-                  media="(min-width: 1601px)"
-                />
-                <img
-                  :srcset="`https://res.cloudinary.com/nickjohn/image/upload/c_fill,w_600,h_400,q_auto:low,f_auto,g_auto/tpgw/${service.feature_img}`"
-                  alt="Service feature image"
-                />
-              </picture>
+              <image-src
+                :alt="service.featureImage.altText ? service.featureImage.altText : `${service.name} feature image for TPGW`"
+                :image_40="urlFor(service.featureImage).width(40).height(27).blur(50).auto('format').quality(10).url()"
+                :image_480="urlFor(service.featureImage).width(480).height(320).auto('format').quality(80).url()"
+                :image_800="urlFor(service.featureImage).width(400).height(267).auto('format').quality(80).url()"
+                :image_960="urlFor(service.featureImage).width(960).height(640).auto('format').quality(80).url()"
+                :image_1000="urlFor(service.featureImage).width(333).height(222).auto('format').quality(80).url()"
+                :image_1200="urlFor(service.featureImage).width(400).height(267).auto('format').quality(80).url()"
+                :image_1400="urlFor(service.featureImage).width(467).height(311).auto('format').quality(80).url()"
+                :image_1600="urlFor(service.featureImage).width(800).height(533).auto('format').quality(80).url()"
+                :image_2000="urlFor(service.featureImage).width(667).height(445).auto('format').quality(80).url()"
+                :image_2400="urlFor(service.featureImage).width(800).height(533).auto('format').quality(80).url()"
+                :image_2800="urlFor(service.featureImage).width(934).height(623).auto('format').quality(80).url()"
+                :image_3200="urlFor(service.featureImage).width(1067).height(711).auto('format').quality(80).url()"
+                :image_4000="urlFor(service.featureImage).width(1334).height(889).auto('format').quality(80).url()"
+              />
             </section>
-            <h2>{{ service.title }}</h2>
+            <h2>{{ service.name }}</h2>
             <div class="gradient"></div>
           </article>
         </nuxt-link>
@@ -45,18 +37,39 @@
 </template>
 
 <script>
+  import imageSrc from '~/components/ImageSrc.vue'
+
+  import client from '~/sanity.js'
+  import imageUrlBuilder from '@sanity/image-url'
+  const builder = imageUrlBuilder(client)
+
   export default {
-    async asyncData({ $content }) {
-      const services = await $content('services').fetch()
-      return {
-        services
+    components: {
+      imageSrc
+    },
+    async asyncData() {
+      const query = `*[_type == 'services'] {
+          _id,
+          name,
+          slug,
+          featureImage
+          }`
+      return client
+        .fetch(query)
+        .then(data => {
+          return { services: data }
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    methods: {
+      urlFor(source) {
+        return builder.image(source)
       }
     },
-    data() {
-      return {}
-    },
     mounted() {
-      // console.log(this.services)
+      console.log(this.services)
     },
     head() {
       return {
@@ -111,14 +124,6 @@
       position: relative;
       width: 100%;
       height: 100%;
-      &:hover {
-        picture {
-          opacity: 0.5;
-        }
-        img {
-          transform: scale(1.2);
-        }
-      }
     }
     h2 {
       position: absolute;
@@ -169,6 +174,14 @@
       height: 100%;
       object-fit: cover;
       transition: transform 0.25s ease-out;
+    }
+    &:hover {
+      picture {
+        opacity: 0.5;
+      }
+      img {
+        transform: scale(1.2);
+      }
     }
   }
 </style>

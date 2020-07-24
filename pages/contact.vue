@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1>Contact</h1>
+    <h1>{{ contact_data.contact.name }}</h1>
     <div class="contact-wrapper">
       <section class="form-wrap">
         <form
@@ -44,30 +44,21 @@
       <section class="contact-wrap">
         <address>
           <h4>
-            <span>Call us:</span> 07795 030117
+            <span>Call us:</span>
+            {{ contact_data.settings.contactDetails.tel }}
           </h4>
           <h4>
-            <span>Email us:</span> tom@tpgw.co.uk
+            <span>Email us:</span>
+            {{ contact_data.settings.contactDetails.email }}
           </h4>
           <h4>
             <span>Opening Hours</span>
           </h4>
-          <p>
-            Mon-Fri:
-            <strong>7:30 - 17:30</strong>
-          </p>
-          <p>
-            Sat:
-            <strong>7:30 - 13:30</strong>
-          </p>
-          <p>
-            Sun:
-            <strong>Closed</strong>
-          </p>
+          <block-content :blocks="contact_data.contact.openingHours" />
           <h4>
             <span>Follow Us</span>
           </h4>
-          <a href="https://www.facebook.com/tompaulleygroundworks/">
+          <a :href="`https://www.facebook.com/${ contact_data.settings.contactDetails.facebook }/`">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
               <path
                 d="M23.9981 11.9991C23.9981 5.37216 18.626 0 11.9991 0 5.37216 0 0 5.37216 0 11.9991c0 5.9891 4.38789 10.9531 10.1242 11.8533v-8.3848H7.07758v-3.4685h3.04662V9.35553c0-3.00727 1.7914-4.66839 4.5322-4.66839 1.3128 0 2.686.23435 2.686.23435v2.9529h-1.513c-1.4906 0-1.9555.92494-1.9555 1.87385v2.25086h3.3279l-.532 3.4685h-2.7959v8.3848c5.7364-.9002 10.1242-5.8642 10.1242-11.8533z"
@@ -81,7 +72,35 @@
 </template>
 
 <script>
+  import client from '~/sanity.js'
+  import BlockContent from 'sanity-blocks-vue-component'
+
   export default {
+    components: {
+      BlockContent
+    },
+    async asyncData() {
+      const query = `{
+          "contact": *[_type == 'contact'][0] {
+            name,
+            openingHours
+        },
+          "settings": *[_type == 'siteSettings'][0] {
+            contactDetails
+          }
+        }`
+      return client
+        .fetch(query)
+        .then(data => {
+          return { contact_data: data }
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    mounted() {
+      // console.log(this.contact_data)
+    },
     head() {
       return {
         titleTemplate: `Contact - %s`

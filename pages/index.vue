@@ -41,7 +41,6 @@
 <script>
   import Glide from '@glidejs/glide'
 
-  import cloudinaryImage from '~/components/cloudinaryImage.vue'
   import imageSrc from '~/components/ImageSrc.vue'
 
   import client from '~/sanity.js'
@@ -52,20 +51,19 @@
 
   export default {
     components: {
-      cloudinaryImage,
       BlockContent,
       imageSrc
     },
     async asyncData() {
       const query = `*[_type == 'home'] {
-                                                                    _id,
-                                                                    ctaLink,
-                                                                    ctaText,
-                                                                    featureImages,
-                                                                    intro,
-                                                                    strapline
-                                                                  }
-                                                                `
+                _id,
+                ctaLink,
+                ctaText,
+                featureImages,
+                intro,
+                strapline
+              }
+            `
       return client
         .fetch(query)
         .then(data => {
@@ -83,13 +81,6 @@
           alt: 'Tom Paulley Groundworks Logo'
         },
         homeData: {
-          headline: 'Delivering all aspects of groundworks',
-          subText:
-            'Tom Paulley Groundworks is a Dorset based ground works company offering services towards all aspects of groundworks, from excavations to drainage and surfacing to landscaping, serving all neighbouring counties.',
-          cta: {
-            text: 'Get a quote now!',
-            link: 'contact'
-          },
           sliderImages: [
             'home-page',
             'Top_Soil_grading_and_shaping.jpg',
@@ -100,9 +91,7 @@
             'Treatment_plant_Septic_tank_and_Cess_Pit_Installations',
             'Power_Floated_Floors',
             'Driveways'
-          ],
-          backgroundImg:
-            'https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto,w_1920,h_1080/v1533204731/tpgw/home-page.jpg'
+          ]
         }
       }
     },
