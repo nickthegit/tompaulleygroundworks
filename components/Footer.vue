@@ -9,7 +9,7 @@
             />
           </svg>
         </div>
-        <span class="label">tompaulleygroundworks</span>
+        <span class="label">{{ contact.facebook }}</span>
       </a>
       <a href="mailto:tom@tpgw.co.uk" class="tpgw-email">
         <div class="icon">
@@ -20,7 +20,7 @@
             />
           </svg>
         </div>
-        <span class="label">tom@tpgw.co.uk</span>
+        <span class="label">{{ contact.email }}</span>
       </a>
       <a href="tel:07795 030117" class="tpgw-call">
         <div class="icon">
@@ -31,14 +31,42 @@
             />
           </svg>
         </div>
-        <span class="label">07795 030117</span>
+        <span class="label">{{ contact.tel }}</span>
       </a>
     </address>
   </footer>
 </template>
 
 <script>
-  export default {}
+  import client from '~/sanity.js'
+
+  export default {
+    data() {
+      return {
+        contact: {
+          email: 'tom@tpgw.co.uk',
+          facebook: 'tompaulleygroundwork',
+          tel: '07795 030117'
+        }
+      }
+    },
+    async fetch() {
+      const query = `*[_type == 'siteSettings'][0] {
+            contactDetails
+          }`
+      return client
+        .fetch(query)
+        .then(data => {
+          this.contact = data.contactDetails
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    },
+    mounted() {
+      // console.log(this.contact)
+    }
+  }
 </script>
 
 <style lang="scss" scoped>

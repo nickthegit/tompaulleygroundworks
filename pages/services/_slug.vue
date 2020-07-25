@@ -111,7 +111,6 @@
       }
     },
     mounted() {
-      console.log('SD', this.service_data)
       let isGlide = document.querySelector('.glide')
       if (isGlide) {
         let glider = new Glide('.glide', {
@@ -145,16 +144,17 @@
     }
   }
   .service_intro {
+    padding-bottom: 40px;
     h1,
     p,
     ul {
       width: 100%;
+      display: block;
       max-width: $textContainer;
       margin: 0 auto;
       padding: 10px 40px;
     }
     ul {
-      padding-bottom: 40px;
       li {
         width: 100%;
         max-width: $textContainer / 2;
@@ -185,6 +185,7 @@
   .img-container {
     width: 100%;
     position: relative;
+    padding-bottom: 0;
   }
   .gallery {
     width: 100%;

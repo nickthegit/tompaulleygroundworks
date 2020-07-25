@@ -8,19 +8,19 @@
               <li class="glide__slide" v-for="image in home_data.featureImages" :key="image._key">
                 <image-src
                   :alt="image.altText ? image.altText : 'homepage image for TPGW'"
-                  :image_40="urlFor(image).width(40).blur(50).auto('format').quality(10).url()"
-                  :image_480="urlFor(image).width(480).auto('format').quality(80).url()"
-                  :image_800="urlFor(image).width(800).auto('format').quality(80).url()"
-                  :image_960="urlFor(image).width(960).auto('format').quality(80).url()"
-                  :image_1000="urlFor(image).width(1000).auto('format').quality(80).url()"
-                  :image_1200="urlFor(image).width(1200).auto('format').quality(80).url()"
-                  :image_1400="urlFor(image).width(1400).auto('format').quality(80).url()"
-                  :image_1600="urlFor(image).width(1600).auto('format').quality(80).url()"
-                  :image_2000="urlFor(image).width(2000).auto('format').quality(80).url()"
-                  :image_2400="urlFor(image).width(2400).auto('format').quality(80).url()"
-                  :image_2800="urlFor(image).width(2800).auto('format').quality(80).url()"
-                  :image_3200="urlFor(image).width(3200).auto('format').quality(80).url()"
-                  :image_4000="urlFor(image).width(4000).auto('format').quality(80).url()"
+                  :image_40="urlFor(image).width(40).blur(50).saturation(-100).auto('format').quality(10).url()"
+                  :image_480="urlFor(image).width(480).saturation(-100).auto('format').quality(80).url()"
+                  :image_800="urlFor(image).width(800).saturation(-100).auto('format').quality(80).url()"
+                  :image_960="urlFor(image).width(960).saturation(-100).auto('format').quality(80).url()"
+                  :image_1000="urlFor(image).width(1000).saturation(-100).auto('format').quality(80).url()"
+                  :image_1200="urlFor(image).width(1200).saturation(-100).auto('format').quality(80).url()"
+                  :image_1400="urlFor(image).width(1400).saturation(-100).auto('format').quality(80).url()"
+                  :image_1600="urlFor(image).width(1600).saturation(-100).auto('format').quality(80).url()"
+                  :image_2000="urlFor(image).width(2000).saturation(-100).auto('format').quality(80).url()"
+                  :image_2400="urlFor(image).width(2400).saturation(-100).auto('format').quality(80).url()"
+                  :image_2800="urlFor(image).width(2800).saturation(-100).auto('format').quality(80).url()"
+                  :image_3200="urlFor(image).width(3200).saturation(-100).auto('format').quality(80).url()"
+                  :image_4000="urlFor(image).width(4000).saturation(-100).auto('format').quality(80).url()"
                 />
               </li>
             </ul>
@@ -56,14 +56,14 @@
     },
     async asyncData() {
       const query = `*[_type == 'home'] {
-                _id,
-                ctaLink,
-                ctaText,
-                featureImages,
-                intro,
-                strapline
-              }
-            `
+              _id,
+              ctaLink,
+              ctaText,
+              featureImages,
+              intro,
+              strapline
+            }
+          `
       return client
         .fetch(query)
         .then(data => {

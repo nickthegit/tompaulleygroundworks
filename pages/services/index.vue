@@ -11,6 +11,7 @@
           <article>
             <section class="img-wrap">
               <image-src
+                v-if="service.featureImage"
                 :alt="service.featureImage.altText ? service.featureImage.altText : `${service.name} feature image for TPGW`"
                 :image_40="urlFor(service.featureImage).width(40).height(27).blur(50).auto('format').quality(10).url()"
                 :image_480="urlFor(service.featureImage).width(480).height(320).auto('format').quality(80).url()"
@@ -26,6 +27,12 @@
                 :image_3200="urlFor(service.featureImage).width(1067).height(711).auto('format').quality(80).url()"
                 :image_4000="urlFor(service.featureImage).width(1334).height(889).auto('format').quality(80).url()"
               />
+              <picture v-else>
+                <img
+                  src="https://via.placeholder.com/800x533?text=Feature+image+needed"
+                  alt="feature image needed warning"
+                />
+              </picture>
             </section>
             <h2>{{ service.name }}</h2>
             <div class="gradient"></div>
@@ -49,11 +56,11 @@
     },
     async asyncData() {
       const query = `*[_type == 'services'] {
-          _id,
-          name,
-          slug,
-          featureImage
-          }`
+                        _id,
+                        name,
+                        slug,
+                        featureImage
+                        }`
       return client
         .fetch(query)
         .then(data => {
@@ -69,7 +76,7 @@
       }
     },
     mounted() {
-      console.log(this.services)
+      // console.log(this.services)
     },
     head() {
       return {
