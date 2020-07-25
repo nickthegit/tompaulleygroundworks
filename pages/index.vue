@@ -1,21 +1,26 @@
 <template>
   <main>
-    <!-- <section :style="{backgroundImage: `url(${homeData.backgroundImg})`}"> -->
     <section>
       <div class="glide_wrap">
         <div class="glide">
           <div class="glide__track" data-glide-el="track">
             <ul class="glide__slides">
-              <li
-                class="glide__slide"
-                v-for="(image, index) in homeData.sliderImages"
-                :key="`${index}homepageslide`"
-              >
-                <cloudinary-image
-                  :image="image"
-                  alt="An image about Tom Paulley Groundworks"
-                  folder="tpgw/homepage-slider"
-                  effects="e_grayscale"
+              <li class="glide__slide" v-for="image in home_data.featureImages" :key="image._key">
+                <image-src
+                  :alt="image.altText ? image.altText : 'homepage image for TPGW'"
+                  :image_40="urlFor(image).width(40).blur(50).saturation(-100).auto('format').quality(10).url()"
+                  :image_480="urlFor(image).width(480).saturation(-100).auto('format').quality(80).url()"
+                  :image_800="urlFor(image).width(800).saturation(-100).auto('format').quality(80).url()"
+                  :image_960="urlFor(image).width(960).saturation(-100).auto('format').quality(80).url()"
+                  :image_1000="urlFor(image).width(1000).saturation(-100).auto('format').quality(80).url()"
+                  :image_1200="urlFor(image).width(1200).saturation(-100).auto('format').quality(80).url()"
+                  :image_1400="urlFor(image).width(1400).saturation(-100).auto('format').quality(80).url()"
+                  :image_1600="urlFor(image).width(1600).saturation(-100).auto('format').quality(80).url()"
+                  :image_2000="urlFor(image).width(2000).saturation(-100).auto('format').quality(80).url()"
+                  :image_2400="urlFor(image).width(2400).saturation(-100).auto('format').quality(80).url()"
+                  :image_2800="urlFor(image).width(2800).saturation(-100).auto('format').quality(80).url()"
+                  :image_3200="urlFor(image).width(3200).saturation(-100).auto('format').quality(80).url()"
+                  :image_4000="urlFor(image).width(4000).saturation(-100).auto('format').quality(80).url()"
                 />
               </li>
             </ul>
@@ -23,14 +28,11 @@
         </div>
       </div>
       <div class="gradient-back"></div>
-      <img class="main-logo" :src="homeData.logo.url" :alt="homeData.logo.alt" />
+      <img class="main-logo" :src="logo.url" :alt="logo.alt" />
       <div class="headline_wrap">
         <h1>{{ home_data.strapline }}</h1>
-        <p>{{ home_data.intro }}</p>
-        <nuxt-link
-          :to="`/${home_data.call_to_action.link}`"
-          class="cta btn"
-        >{{home_data.call_to_action.text}} →</nuxt-link>
+        <block-content :blocks="home_data.intro" />
+        <nuxt-link :to="`/${home_data.ctaLink}`" class="cta btn">{{home_data.ctaText}} →</nuxt-link>
       </div>
     </section>
   </main>
@@ -38,33 +40,47 @@
 
 <script>
   import Glide from '@glidejs/glide'
-  import cloudinaryImage from '~/components/cloudinaryImage.vue'
+
+  import imageSrc from '~/components/ImageSrc.vue'
+
+  import client from '~/sanity.js'
+  import BlockContent from 'sanity-blocks-vue-component'
+  import imageUrlBuilder from '@sanity/image-url'
+
+  const builder = imageUrlBuilder(client)
 
   export default {
     components: {
-      cloudinaryImage
+      BlockContent,
+      imageSrc
     },
-    async asyncData({ $content, params }) {
-      const home_data = await $content('pages', 'home').fetch()
-      return {
-        home_data
-      }
+    async asyncData() {
+      const query = `*[_type == 'home'] {
+              _id,
+              ctaLink,
+              ctaText,
+              featureImages,
+              intro,
+              strapline
+            }
+          `
+      return client
+        .fetch(query)
+        .then(data => {
+          return { home_data: data[0] }
+        })
+        .catch(err => {
+          console.log(err)
+        })
     },
     data() {
       return {
+        logo: {
+          url:
+            'https://res.cloudinary.com/nickjohn/image/upload/w_400/v1590703038/tpgw/tom-paulley-groundworks-logo.png',
+          alt: 'Tom Paulley Groundworks Logo'
+        },
         homeData: {
-          logo: {
-            url:
-              'https://res.cloudinary.com/nickjohn/image/upload/w_400/v1590703038/tpgw/tom-paulley-groundworks-logo.png',
-            alt: 'Tom Paulley Groundworks Logo'
-          },
-          headline: 'Delivering all aspects of groundworks',
-          subText:
-            'Tom Paulley Groundworks is a Dorset based ground works company offering services towards all aspects of groundworks, from excavations to drainage and surfacing to landscaping, serving all neighbouring counties.',
-          cta: {
-            text: 'Get a quote now!',
-            link: 'contact'
-          },
           sliderImages: [
             'home-page',
             'Top_Soil_grading_and_shaping.jpg',
@@ -75,14 +91,18 @@
             'Treatment_plant_Septic_tank_and_Cess_Pit_Installations',
             'Power_Floated_Floors',
             'Driveways'
-          ],
-          backgroundImg:
-            'https://res.cloudinary.com/jonserness/image/upload/c_fill,q_auto,w_1920,h_1080/v1533204731/tpgw/home-page.jpg'
+          ]
         }
       }
     },
+    methods: {
+      urlFor(source) {
+        return builder.image(source)
+      }
+    },
     mounted() {
-      console.log(this.home_data)
+      // console.log(this.home_data)
+      // console.log('home data', this.home_data)
 
       let glider = new Glide('.glide', {
         type: 'carousel',
@@ -100,13 +120,6 @@
         }
       }).mount()
     }
-    // head() {
-    //   return {
-    //     script: [
-    //       { src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }
-    //     ]
-    //   }
-    // }
   }
 </script>
 <style lang="scss" scoped>

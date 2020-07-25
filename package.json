@@ -1,7 +1,7 @@
 {
-  "name": "nuxt-quickstart",
+  "name": "tpgw",
   "version": "1.0.0",
-  "description": "nuxt quickstart",
+  "description": "Tom Paulley Groundworks is a Dorset based ground works company offering services towards all aspects of groundworks, from excavations to drainage and surfacing to landscaping, serving all neighbouring counties.",
   "author": "nickthegit",
   "private": true,
   "scripts": {
@@ -17,10 +17,14 @@
     "@nuxtjs/axios": "^5.9.5",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "@nuxtjs/sitemap": "^2.3.1",
+    "@sanity/client": "^1.149.18",
+    "@sanity/image-url": "^0.140.19",
     "nuxt": "^2.11.0",
+    "sanity-blocks-vue-component": "^0.1.0",
     "v-lazy-image": "^1.4.0"
   },
   "devDependencies": {
+    "@nuxtjs/dotenv": "^1.4.1",
     "@nuxtjs/style-resources": "^1.0.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.2",

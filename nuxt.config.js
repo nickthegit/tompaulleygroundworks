@@ -37,6 +37,11 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+  env: {
+    SANITYID: process.env.SANITYID,
+    SANITYDATASET: process.env.SANITYDATASET,
+    SANITYCDN: process.env.SANITYCDN
+  },
   /*
   ** Customize the progress-bar color
   */
@@ -55,6 +60,7 @@ export default {
   ** Nuxt.js dev-modules
   */
   buildModules: [
+    '@nuxtjs/dotenv',
   ],
   /*
   ** Nuxt.js modules

@@ -35,6 +35,7 @@
 </template>
 
 <script>
+  import client from '~/sanity.js'
   export default {
     data() {
       return {
@@ -49,9 +50,7 @@
         this.navState = false
       }
     },
-    mounted() {
-      console.log(this.$route)
-    },
+    mounted() {},
     head() {
       return {
         bodyAttrs: {
