@@ -1,6 +1,7 @@
 
 export default {
   mode: 'universal',
+  target: 'static',
   /*
   ** Headers of the page
   */
@@ -82,32 +83,20 @@ export default {
       './assets/scss/_mediaquery.scss'
     ]
   },
-  sitemap: {
-    path: '/sitemap.xml',
-    hostname: 'https://tpgw.co.uk',
-    exclude: [
-      '/thanks',
-      '/404'
-    ],
-    routes: async () => {
-      const { $content } = require('@nuxt/content')
-      const files = await $content('services').fetch()
+  // sitemap: {
+  //   path: '/sitemap.xml',
+  //   hostname: 'https://tpgw.co.uk',
+  //   exclude: [
+  //     '/thanks',
+  //     '/404'
+  //   ],
+  //   // routes: async () => {
+  //   //   const { $content } = require('@nuxt/content')
+  //   //   const files = await $content('services').fetch()
 
-      return files.map(file => file.path === '/index' ? '/' : file.path)
-    }
-  },
-  /*
-  ** Build configuration
-  */
-  generate: {
-    fallback: true,
-    async routes() {
-      const { $content } = require('@nuxt/content')
-      const files = await $content('services').fetch()
-
-      return files.map(file => file.path === '/index' ? '/' : file.path)
-    }
-  },
+  //   //   return files.map(file => file.path === '/index' ? '/' : file.path)
+  //   // }
+  // },
   build: {
     /*
     ** You can extend webpack config here
