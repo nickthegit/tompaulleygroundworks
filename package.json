@@ -9,7 +9,9 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "analyze": "nuxt build --analyze"
+    "analyze": "nuxt build --analyze",
+    "export": "nuxt export",
+    "serve": "nuxt serve"
   },
   "dependencies": {
     "@glidejs/glide": "^3.4.1",
@@ -19,7 +21,7 @@
     "@nuxtjs/sitemap": "^2.3.1",
     "@sanity/client": "^1.149.18",
     "@sanity/image-url": "^0.140.19",
-    "nuxt": "^2.11.0",
+    "nuxt": "^2.13.3",
     "sanity-blocks-vue-component": "^0.1.0",
     "v-lazy-image": "^1.4.0"
   },
@@ -30,7 +32,7 @@
     "eslint-plugin-prettier": "^3.1.2",
     "node-sass": "^4.13.1",
     "prettier": "^2.0.5",
-    "sass-loader": "^8.0.2"
+    "sass-loader": "^9.0.2"
   },
   "main": "nuxt.config.js",
   "license": "ISC"
