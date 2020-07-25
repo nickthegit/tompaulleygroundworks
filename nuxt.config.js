@@ -1,3 +1,4 @@
+import client from './sanity.js'
 
 export default {
   mode: 'universal',
@@ -90,12 +91,21 @@ export default {
       '/thanks',
       '/404'
     ],
-    // routes: async () => {
-    //   const { $content } = require('@nuxt/content')
-    //   const files = await $content('services').fetch()
+    routes: async () => {
+      const query = `*[_type == 'services'] {slug}`
+      return client
+        .fetch(query)
+        .then(data => {
+          return data.map(page => `/services/${page.slug.current}`)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+      // const { $content } = require('@nuxt/content')
+      // const files = await $content('services').fetch()
 
-    //   return files.map(file => file.path === '/index' ? '/' : file.path)
-    // }
+      // return files.map(file => file.path === '/index' ? '/' : file.path)
+    }
   },
   build: {
     /*
